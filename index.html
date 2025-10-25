@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NūrNames - Discover Beautiful Muslim & Quranic Baby Names</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Manrope:wght@300;400;500;600&family=Amiri:wght@400;700&family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Names Data -->
+    <script src="names-data.js"></script>
+    <!--Css-->
+   <style>
+    /* ===== ROOT VARIABLES & THEMES ===== */
+    :root {
+        --primary: #0095fd;    /* Bright Electric Blue */
+        --accent: #d4af37;
+        --background: #f8f6f2;
+        --secondary: #1e3a5f;
+        --dark-mode: #0a0f14;
+        --glow: rgba(212,175,55,0.4);
+    }
+    
+    .dark {
+        --primary: #1e3a5f;
+        --accent: #d4af37;
+        --background: #0a0f14;
+        --secondary: #0f4c5c;
+    }
+    
+    .theme-emerald {
+        --primary: #047857;
+        --accent: #10b981;
+        --secondary: #065f46;
+        --glow: rgba(16, 185, 129, 0.45);
+    }
+    
+    .theme-royal-blue {
+        --primary: #1e40af;
+        --accent: #3b82f6;
+        --secondary: #1e3a8a;
+        --glow: rgba(59, 130, 246, 0.45);
+    }
+    
+    .theme-desert-glow {
+        --primary: #92400e;
+        --accent: #f59e0b;
+        --secondary: #78350f;
+        --glow: rgba(245, 158, 11, 0.45);
+    }
+
+    /* ===== BASE STYLES ===== */
+    body {
+        font-family: 'Manrope', sans-serif;
+        background-color: var(--background);
+        color: var(--primary);
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .dark body {
+        color: #e2e8f0;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Cinzel Decorative', serif;
+    }
+    
+    .arabic {
+        font-family: 'Amiri', serif;
+        font-size: 1.5rem;
+    }
+    
+    .quranic {
+        font-family: 'Reem Kufi Ink', serif;
+    }
+
+    /* ===== COMPONENT STYLES ===== */
+    /* Cards */
+    .card {
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Quranic Card - PREMIUM VERSION */
+.quranic-card {
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 25px var(--glow), 0 8px 24px rgba(10, 35, 66, 0.12);
+    background: linear-gradient(135deg, #FFFFFF, #FEFCE8) !important;
+    position: relative;
+}
+
+
+
+.dark .quranic-card {
+    background: linear-gradient(135deg, #1E293B, #1E1B2B) !important;
+    border: 2px solid var(--accent);
+}
+
+.quranic-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 0 35px var(--glow), 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Forbidden Card - ENHANCED VERSION */
+.forbidden-card {
+    border: 2px solid #DC2626;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+    background: linear-gradient(135deg, #FFFFFF, #FEF2F2) !important;
+    position: relative;
+}
+
+.forbidden-card::before {
+    content: "⚠";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #DC2626;
+    font-size: 1.2rem;
+}
+
+.dark .forbidden-card {
+    background: linear-gradient(135deg, #1E293B, #2A1E1E) !important;
+    border: 2px solid #DC2626;
+}
+
+.forbidden-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
+}
+
+    /* Glassmorphism */
+    .glassmorphism {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glassmorphism {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Accent Glow System */
+    .accent-glow {
+        color: var(--accent);
+        border-color: var(--accent);
+        transition: all 0.3s ease;
+    }
+    
+    .accent-glow:hover,
+    .accent-glow:focus {
+        box-shadow: 0 0 8px var(--accent);
+        text-shadow: 0 0 6px var(--accent);
+    }
+
+    /* Buttons */
+    #explore-btn {
+        background: var(--primary);
+        color: #fff;
+        border: 1px solid var(--accent);
+        box-shadow: 0 0 18px rgba(212, 175, 55, 0.8);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .accent-button {
+        background: var(--accent);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .accent-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Filter Buttons */
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 0.5rem 0;
+        width: 100%;
+    }
+
+    .filter-btn {
+        background-color: #f8f6f2;
+        color: var(--primary);
+        font-weight: 500;
+        padding: 0.5rem 1.2rem;
+        border-radius: 9999px;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        flex-shrink: 0;
+    }
+    
+    .dark .filter-btn {
+        background-color: rgba(55, 65, 81, 0.8);
+        color: #e2e8f0;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .filter-btn:hover {
+        background-color: var(--accent);
+        color: #fff;
+        box-shadow: 0 0 12px var(--glow);
+    }
+    
+    .filter-btn.active {
+        background-color: var(--accent);
+        color: #fff;
+        box-shadow: 0 0 14px var(--glow);
+    }
+
+    /* Search Input */
+    #search-input:focus {
+        outline: none;
+        border: 2px solid var(--accent);
+        box-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+        transition: all 0.2s ease;
+    }
+    
+    #suggestions li {
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    #suggestions li:hover {
+        background-color: rgba(212, 175, 55, 0.15);
+        color: var(--accent);
+    }
+
+    /* Sections */
+    #names {
+        background: linear-gradient(180deg, #f9f8f4 0%, #fafafa 60%, #f2e8d9 100%);
+    }
+    
+    .dark #names {
+        background: linear-gradient(180deg, #0a0f14 0%, #111827 70%, #1f2937 100%);
+    }
+
+    /* ===== MOBILE MENU - 100% WORKING ===== */
+#mobile-menu {
+    position: fixed;
+    top: 70px; /* Navbar height ke niche */
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.dark #mobile-menu {
+    background: #1f2937;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+#mobile-menu:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Mobile menu links */
+#mobile-menu a {
+    display: block;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.dark #mobile-menu a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+#mobile-menu a:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--accent);
+    padding-left: 2rem;
+}
+
+/* Icons */
+#menu-icon, #close-icon {
+    transition: all 0.3s ease;
+}
+
+/* ===== MOBILE NAV ACTIVE STATES ===== */
+#mobile-menu a.active {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    font-weight: 600;
+}
+
+#mobile-menu a.active::before {
+    content: "•";
+    margin-right: 0.5rem;
+    color: var(--accent);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+/* Staggered animation for links */
+#mobile-menu a:nth-child(1) { transition-delay: 0.1s; }
+#mobile-menu a:nth-child(2) { transition-delay: 0.15s; }
+#mobile-menu a:nth-child(3) { transition-delay: 0.2s; }
+#mobile-menu a:nth-child(4) { transition-delay: 0.25s; }
+#mobile-menu a:nth-child(5) { transition-delay: 0.3s; }
+#mobile-menu a:nth-child(6) { transition-delay: 0.35s; }
+
+    /* Footer */
+    .footer-section {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--accent);
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .footer-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 70%);
+        pointer-events: none;
+    }
+    
+    .developer-name {
+        font-family: 'Cinzel Decorative', cursive;
+        color: var(--accent);
+        letter-spacing: 1px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .developer-name:hover {
+        text-shadow: 0 0 10px var(--accent);
+    }
+    
+    .footer-section h2 {
+        color: var(--accent);
+        font-family: 'Cinzel Decorative', serif;
+        letter-spacing: 1px;
+        text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    
+    .footer-section p {
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+    
+    .footer-link {
+        color: var(--accent);
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover {
+        color: #fff;
+    }
+    
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    /* Light Theme Footer Adjustments */
+    .light .footer-section {
+        background: linear-gradient(135deg, #faf3e0, #f0e0b2);
+        color: #4a3b0f;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .light .footer-section p,
+    .light .footer-section .footer-link {
+        color: #4a3b0f;
+    }
+    
+    .light .developer-name {
+        color: #b38728;
+    }
+    
+    .light .footer-section h2 {
+        color: #b38728;
+        text-shadow: 0 0 6px rgba(179, 135, 40, 0.4);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .floating {
+        animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+        0% { transform: translate(0, 0px); }
+        50% { transform: translate(0, 10px); }
+        100% { transform: translate(0, -0px); }
+    }
+    
+    .pulse-glow {
+        animation: pulse-glow 2s infinite;
+    }
+    
+    @keyframes pulse-glow {
+        0% { box-shadow: 0 0 5px var(--glow); }
+        50% { box-shadow: 0 0 20px var(--glow); }
+        100% { box-shadow: 0 0 5px var(--glow); }
+    }
+    
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .slide-up {
+        animation: slideUp 0.5s ease-out;
+    }
+    
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    /* Tablet & Mobile (768px and below) */
+    @media (max-width: 768px) {
+        /* Body overflow control */
+        body {
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Layout */
+        .container.mx-auto.px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .text-2xl.font-bold {
+            font-size: 1.25rem;
+        }
+        
+        .ml-2.text-xs {
+            margin-left: 0.25rem;
+            font-size: 0.6rem;
+            padding: 0.1rem 0.4rem;
+        }
+        
+        /* Filter Buttons - NO HORIZONTAL SCROLL */
+        .filter-container {
+            flex-wrap: wrap;
+            overflow-x: visible;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0;
+        }
+        
+        .filter-btn {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            margin: 0.05rem;
+            flex-shrink: 0;
+        }
+        
+        /* Cards Grid */
+        .grid.grid-cols-1 {
+            gap: 1rem;
+        }
+        
+        .grid.grid-cols-1.sm\:grid-cols-2 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        /* Card Content */
+        .p-6 {
+            padding: 1rem;
+        }
+        
+        .text-xl.font-bold {
+            font-size: 1.1rem;
+        }
+        
+        .arabic.text-2xl {
+            font-size: 1.4rem;
+        }
+        
+        /* Hero Section */
+        .text-4xl.md\:text-6xl {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+        
+        .text-xl.md\:text-2xl {
+            font-size: 1.1rem;
+        }
+        
+        /* Search Bar */
+        .py-4 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        
+        .pl-4.pr-20 {
+            padding-right: 3.5rem;
+        }
+        
+        #search-input {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        /* Footer */
+        .footer-section {
+            text-align: center;
+        }
+        
+        /* Favorite Feedback */
+        .favorite-feedback {
+            top: 1rem;
+            right: 1rem;
+            left: 1rem;
+            max-width: calc(100% - 2rem);
+        }
+    }
+
+    /* Small Mobile (480px and below) */
+    @media (max-width: 480px) {
+        /* Layout */
+        .container.mx-auto.px-4 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        /* Navigation */
+        .flex.items-center.space-x-4 {
+            gap: 0.5rem;
+        }
+        
+        .py-1.px-2.text-sm {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+        }
+        
+        /* Cards Grid */
+        .grid.grid-cols-1.sm\:grid-cols-2 {
+            gap: 0.75rem;
+        }
+        
+        .xs\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        
+        .card {
+            margin: 0.125rem;
+        }
+        
+        /* Card Content */
+        .p-6 {
+            padding: 0.75rem;
+        }
+        
+        .text-xl.font-bold {
+            font-size: 1rem;
+        }
+        
+        .arabic.text-2xl {
+            font-size: 1.2rem;
+        }
+        
+        .text-sm {
+            font-size: 0.8rem;
+        }
+        
+        /* Hero Section */
+        .text-4xl.md\:text-6xl {
+            font-size: 1.75rem;
+            line-height: 2.25rem;
+            padding: 0 0.5rem;
+        }
+        
+        .text-xl.md\:text-2xl {
+            font-size: 1rem;
+            padding: 0 0.5rem;
+        }
+        
+        /* Filter & Sort */
+        .flex-col.md\:flex-row {
+            gap: 1rem;
+        }
+        
+        .filter-container {
+            gap: 0.3rem;
+        }
+        
+        .filter-btn {
+            font-size: 0.7rem;
+            padding: 0.35rem 0.7rem;
+        }
+        
+        /* Modal */
+        .max-w-md.w-full.mx-4 {
+            margin: 1rem;
+            max-height: 85vh;
+        }
+    }
+
+    /* Extra Small Devices (360px and below) */
+    @media (max-width: 360px) {
+        .container.mx-auto.px-4 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        .xs\:grid-cols-2 {
+            grid-template-columns: 1fr;
+        }
+        
+        .filter-btn {
+            font-size: 0.65rem;
+            padding: 0.3rem 0.6rem;
+        }
+        
+        .filter-container {
+            gap: 0.25rem;
+        }
+        
+        /* Hero text size for very small screens */
+        .text-4xl.md\:text-6xl {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    /* Send Message Button - Accent System Integrated */
+.send-message-btn {
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 10px var(--glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.send-message-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--glow);
+    background: var(--accent);
+    filter: brightness(1.1);
+}
+
+.send-message-btn:active {
+    transform: translateY(0);
+}
+
+.send-message-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.send-message-btn:hover::before {
+    left: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .send-message-btn {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+}
+
+</style>
+</head>
+<body class="bg-background text-primary">
+    <!-- Navigation -->
+    <nav class="glassmorphism sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+         <a href="#home" class="flex items-center">
+  <h1 class="text-xl sm:text-2xl md:text-3xl font-bold gradient-text animate-gradient">
+    Nūr<span class="text-accent">Names</span>
+  </h1>
+  <span class="ml-1 sm:ml-2 text-xs bg-accent text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded-full">Beta</span>
+</a>
+
+<style>
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+}
+
+/* Animation */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradientAnimation 3s linear infinite;
+}
+</style>
+
+
+
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                <a href="#names" class="hover:text-accent transition-colors">Names</a>
+                <a href="#quranic" class="hover:text-accent transition-colors">Quranic Names</a>
+                <a href="#forbidden" class="hover:text-accent transition-colors">Forbidden Names</a>
+                <a href="#favorites" class="hover:text-accent transition-colors">Favorites</a>
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                
+                <div class="relative">
+                    <select id="theme-selector" class="bg-transparent border border-gray-300 dark:border-gray-600 rounded-md py-1 px-2 text-sm focus:outline-none focus:ring-1 focus:ring-accent">
+                        <option value="default">Default</option>
+                        <option value="emerald">Emerald</option>
+                        <option value="royal-blue">Royal Blue</option>
+                        <option value="desert-glow">Desert Glow</option>
+                    </select>
+                </div>
+                
+               <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+    <!-- Hamburger Icon -->
+    <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <!-- Cross Icon -->
+    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+</button>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="md:hidden hidden">
+    <div class="flex flex-col">
+        <a href="#home" class="hover:text-accent transition-colors">Home</a>
+        <a href="#names" class="hover:text-accent transition-colors">Names</a>
+        <a href="#quranic" class="hover:text-accent transition-colors">Quranic Names</a>
+        <a href="#forbidden" class="hover:text-accent transition-colors">Forbidden Names</a>
+        <a href="#favorites" class="hover:text-accent transition-colors">Favorites</a>
+        <a href="#about" class="hover:text-accent transition-colors">About</a>
+    </div>
+</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        
+
+
+<!-- Discover Heading-->
+        
+        <div class="container mx-auto px-4 text-center z-10 slide-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover the Most Beautiful Muslim & Quranic Names</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">In Arabic, Urdu, Persian & English — with Pronunciations & Meanings</p>
+<!-- Search Bar Container -->
+<div class="max-w-2xl mx-auto mb-10">
+  <div class="relative">
+
+    <!-- Input Field -->
+    <input type="text" id="search-input"
+           placeholder="Search by name, meaning, or origin..."
+           class="w-full py-4 pl-4 pr-20 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all shadow-md">
+
+
+    <!-- Search Icon -->
+    <button id="search-icon-btn"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-20 text-gray-500 dark:text-gray-300 hover:text-accent dark:hover:text-yellow-400 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+      </svg>
+    </button>
+
+    <!-- Suggestions Dropdown -->
+    <ul id="suggestions"
+        class="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl shadow-lg hidden max-h-64 overflow-auto divide-y divide-gray-200 dark:divide-gray-700">
+      <!-- Suggestions injected dynamically via JS -->
+    </ul>
+
+  </div>
+</div>
+
+
+            
+            
+            <button id="explore-btn" class="px-8 py-3 bg-primary text-white rounded-full hover:bg-secondary transition-colors shadow-lg pulse-glow">Explore Names ↓</button>
+        </div>
+    </section>
+
+<!-- Names Section -->
+<section id="names" class="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+  <div class="container mx-auto px-4">
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-[Cinzel] text-primary dark:text-accent">
+      Beautiful Islamic Names
+    </h2>
+    <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+      Discover names with deep spiritual meanings and cultural significance
+    </p>
+
+    <!-- Filter & Sort Overlay -->
+<div class="backdrop-blur-xl bg-white/60 dark:bg-gray-800/40 border border-gray-200/30 dark:border-gray-700/30 shadow-lg rounded-3xl px-4 sm:px-6 py-4 sm:py-5 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-5 mb-10">
+
+  <!-- Filters - YEH CHANGE KARO -->
+  <div class="filter-scroll-container">  <!-- YEH CLASS CHANGE KARO -->
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="boy">👦 Boys</button>
+    <button class="filter-btn" data-filter="girl">👧 Girls</button>
+    <button class="filter-btn" data-filter="quranic">📖 Quranic</button>
+    <button class="filter-btn" data-filter="arabic">Arabic</button>
+    <button class="filter-btn" data-filter="urdu">Urdu</button>
+    <button class="filter-btn" data-filter="persian">Persian</button>
+  </div>
+
+  <!-- Sorting + Random -->
+  <div class="flex flex-wrap justify-center md:justify-end gap-2 sm:gap-3 w-full md:w-auto mt-4 md:mt-0">
+    <select id="sort-select"
+      class="bg-white/80 dark:bg-gray-800/70 border border-gray-300 dark:border-gray-600 rounded-xl py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/70 w-full md:w-auto">
+      <option value="az">A–Z</option>
+      <option value="za">Z–A</option>
+      <option value="origin">By Origin</option>
+      <option value="meaning">By Meaning</option>
+    </select>
+
+    <button id="random-name"
+      class="px-3 sm:px-4 py-2 bg-accent text-white rounded-xl shadow-md hover:shadow-lg hover:bg-accent/90 transition-all text-sm w-full md:w-auto">
+      🎲 Surprise Me
+    </button>
+  </div>
+</div>
+
+    <!-- Names Grid -->
+    <div id="names-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Names dynamically loaded here -->
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+  <button id="load-more"
+    class="accent-button px-6 py-3 rounded-md text-gradient font-medium transition-all duration-300 shadow-md hover:shadow-lg">
+    Load More Names
+  </button>
+</div>
+
+  </div>
+</section>
+
+
+    <!-- Quranic Names Section -->
+    <section id="quranic" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-5 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Quranic Names</h2>
+            <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">Names directly mentioned in the Holy Quran with their references</p>
+            
+            <div id="quranic-names-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Quranic names will be dynamically loaded here -->
+            </div>
+            <!--Load more Quranic Names-->
+        <div class="text-center mt-12">
+            <button id="load-more-quranic" class="accent-button px-6 py-3 rounded-md text-gradient font-medium transition-all duration-300 shadow-md hover:shadow-lg">
+                Load More Quranic Names
+            </button>
+        </div>
+        </div>
+    </section>
+
+    <!-- Forbidden Names Section -->
+    <section id="forbidden" class="py-20 bg-red-50 dark:bg-red-900/20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Forbidden Names in Islam</h2>
+            <p class="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">Names that are discouraged in Islam due to their meanings or associations</p>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-4xl mx-auto mb-12">
+                <p class="text-lg mb-4">In Islam, certain names are considered forbidden (haram) or highly discouraged (makruh) for various reasons:</p>
+                <ul class="list-disc pl-6 space-y-2 mb-6">
+                    <li>Names that are exclusive to Allah (e.g., Al-Ahad, Al-Khaliq)</li>
+                    <li>Names that imply worship to other than Allah</li>
+                    <li>Names with negative or unpleasant meanings</li>
+                    <li>Names that may cause embarrassment or mockery</li>
+                    <li>Names of tyrants or famous evil personalities</li>
+                </ul>
+                <p class="italic text-gray-600 dark:text-gray-400">"Every child is affected by the name they are given. Choose good names for your children." - Prophet Muhammad (PBUH)</p>
+            </div>
+            
+            <div id="forbidden-names-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Forbidden names will be dynamically loaded here -->
+            </div>
+            <!-- Load more Forbidden Names -->
+        <div class="text-center mt-12">
+            <button id="load-more-forbidden" class="px-6 py-3 bg-red-600 text-white rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:bg-red-700">
+                Load More Forbidden Names
+            </button>
+        </div>
+        </div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section id="favorites" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Your Favorite Names</h2>
+            <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">Names you've saved for future reference</p>
+            
+            <div id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Favorites will be dynamically loaded here -->
+            </div>
+            
+            <div id="empty-favorites" class="text-center py-12 hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">No favorites yet</h3>
+                <p class="text-gray-600 dark:text-gray-400">Start exploring names and add them to your favorites!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">About NūrNames</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+                    <p class="text-lg mb-6">NūrNames celebrates the beauty, faith, and meaning behind every Muslim name — across cultures and languages.</p>
+                    
+                    <p class="mb-6">Our mission is to provide a comprehensive resource for parents seeking meaningful Islamic names for their children, with accurate pronunciations, origins, and references from the Quran and Islamic tradition.</p>
+                    
+                    <p>We believe that a name is not just an identifier but a reflection of identity, faith, and heritage. Each name in our collection has been carefully researched to ensure authenticity and cultural significance.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-1 focus:ring-accent dark:bg-gray-700" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-1 focus:ring-accent dark:bg-gray-700" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-1 focus:ring-accent dark:bg-gray-700" required></textarea>
+                            </div>
+                            <button type="submit" class="send-message-btn">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                   Send Message
+                    </button>
+                        </form>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Developer</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">AA</div>
+                            <div>
+                                <h4 class="font-semibold">Ali Ahtisham</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+                            </div>
+                        </div>
+                        <p class="mb-4">Passionate about creating digital experiences that blend faith, technology, and beautiful design.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-primary hover:text-accent transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer-section text-white py-12 transition-all duration-500">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl font-bold mb-2">Nūr<span class="text-accent">Names</span></h2>
+      <p class="max-w-2xl mx-auto text-gray-200">Every child is a blessing — الحمد لله</p>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0 text-gray-300">
+        <p>
+          Developed by <span class="developer-name">Ali Ahtisham</span> |
+          Designed with Faith and Elegance
+        </p>
+      </div>
+
+      <div class="flex space-x-6">
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Contact</a>
+      </div>
+    </div>
+
+    <div class="text-center mt-8 pt-8 border-t border-gray-600">
+      <p class="text-sm text-gray-400">© 2025 NūrNames. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- Name Detail Modal -->
+    <div id="name-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="modal-name" class="text-2xl font-bold"></h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Arabic</h4>
+                        <p id="modal-arabic" class="arabic text-xl"></p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Urdu</h4>
+                        <p id="modal-urdu" class="text-xl"></p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Persian</h4>
+                        <p id="modal-persian" class="text-xl"></p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Pronunciation</h4>
+                        <p id="modal-pronunciation" class="italic"></p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Meaning</h4>
+                        <p id="modal-meaning"></p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Origin</h4>
+                        <p id="modal-origin"></p>
+                    </div>
+                    
+                    <div id="modal-ayah-container" class="hidden">
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Quranic Reference</h4>
+                        <p id="modal-ayah"></p>
+                    </div>
+                    
+                    <div class="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <button id="modal-favorite" class="flex items-center text-accent hover:text-yellow-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            <span>Add to Favorites</span>
+                        </button>
+                        
+                        <div class="flex space-x-2">
+                            <button id="modal-copy" class="p-2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" title="Copy name">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </button>
+                            
+                            <button id="modal-share" class="p-2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" title="Share name">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                </svg>
+                            </button>
+                            
+                            <button id="modal-audio" class="p-2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" title="Listen to pronunciation">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a8 8 0 010 12m-4.5-9.5L12 3v18l-4.5-4.5H4a1 1 0 01-1-1v-7a1 1 0 011-1h3.5z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Names Database
+        // Names in names-data.js
+        const namesDatabase = [];
+
+    // ===== DOM ELEMENTS =====
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeSelector = document.getElementById('theme-selector');
+    const searchInput = document.getElementById('search-input');
+    const exploreBtn = document.getElementById('explore-btn');
+    const sortSelect = document.getElementById('sort-select');
+    const randomNameBtn = document.getElementById('random-name');
+    const loadMoreBtn = document.getElementById('load-more');
+    const namesGrid = document.getElementById('names-grid');
+    const quranicNamesGrid = document.getElementById('quranic-names-grid');
+    const forbiddenNamesGrid = document.getElementById('forbidden-names-grid');
+    const favoritesGrid = document.getElementById('favorites-grid');
+    const emptyFavorites = document.getElementById('empty-favorites');
+    const contactForm = document.getElementById('contact-form');
+    const nameModal = document.getElementById('name-modal');
+    const closeModal = document.getElementById('close-modal');
+    const modalFavorite = document.getElementById('modal-favorite');
+    const modalCopy = document.getElementById('modal-copy');
+    const modalShare = document.getElementById('modal-share');
+    const modalAudio = document.getElementById('modal-audio');
+
+    // ===== STATE VARIABLES =====
+    let currentFilter = 'all';
+    let currentSort = 'az';
+    let displayedNames = 12;
+    let displayedQuranicNames = 12;
+    let displayedForbiddenNames = 12;
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let currentNameInModal = null;
+
+    // ===== INITIALIZATION =====
+    function init() {
+        // Apply saved theme
+        document.documentElement.classList.remove('dark');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+
+        if (savedColorTheme !== 'default') {
+            document.documentElement.classList.add(`theme-${savedColorTheme}`);
+            themeSelector.value = savedColorTheme;
+        }
+        
+        // Render names
+        renderNames();
+        renderQuranicNames();
+        renderForbiddenNames();
+        renderFavorites();
+        
+        // Set up event listeners
+        setupEventListeners();
+        
+        // Fix filter buttons
+        setTimeout(fixFilterButtons, 100);
+    }
+
+    // ===== EVENT LISTENERS SETUP =====
+    function setupEventListeners() {
+        // Theme functionality
+        themeToggle.addEventListener('click', toggleTheme);
+        themeSelector.addEventListener('change', changeColorTheme);
+        
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (!mobileMenu.classList.contains('hidden') && 
+                !e.target.closest('#mobile-menu') && 
+                !e.target.closest('#mobile-menu-toggle')) {
+                
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const menuIcon = document.getElementById('menu-icon');
+                const closeIcon = document.getElementById('close-icon');
+                
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', debounce(handleSearch, 300));
+        
+        // Explore button
+        exploreBtn.addEventListener('click', () => {
+            document.getElementById('names').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Sort functionality
+        sortSelect.addEventListener('change', () => {
+            currentSort = sortSelect.value;
+            renderNames();
+        });
+        
+        // Random name generator
+        randomNameBtn.addEventListener('click', showRandomName);
+        
+        // Load more names
+        loadMoreBtn.addEventListener('click', loadMoreNames);
+        
+        // NEW: Load More buttons for Quranic and Forbidden names
+        const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
+        const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
+
+        if (loadMoreQuranicBtn) {
+            loadMoreQuranicBtn.addEventListener('click', function() {
+                displayedQuranicNames += 12;
+                renderQuranicNames();
+            });
+        }
+
+        if (loadMoreForbiddenBtn) {
+            loadMoreForbiddenBtn.addEventListener('click', function() {
+                displayedForbiddenNames += 12;
+                renderForbiddenNames();
+            });
+        }
+        
+        // Contact form
+        contactForm.addEventListener('submit', handleContactForm);
+        
+        // Modal functionality
+        closeModal.addEventListener('click', closeNameModal);
+        modalFavorite.addEventListener('click', toggleFavoriteInModal);
+        modalCopy.addEventListener('click', copyName);
+        modalShare.addEventListener('click', shareName);
+        modalAudio.addEventListener('click', playPronunciation);
+        
+        // Close modal when clicking outside
+        nameModal.addEventListener('click', (e) => {
+            if (e.target === nameModal) {
+                closeNameModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !nameModal.classList.contains('hidden')) {
+                closeNameModal();
+            }
+        });
+    }
+
+    // ===== MOBILE MENU =====
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenu.classList.contains('hidden')) {
+            // Open menu
+            mobileMenu.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        } else {
+            // Close menu
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+    }
+
+    // ===== THEME FUNCTIONALITY =====
+    function toggleTheme() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    function changeColorTheme() {
+        const theme = themeSelector.value;
+        document.documentElement.classList.remove('theme-emerald', 'theme-royal-blue', 'theme-desert-glow');
+        if (theme !== 'default') {
+            document.documentElement.classList.add(`theme-${theme}`);
+        }
+        localStorage.setItem('colorTheme', theme);
+    }
+
+    // ===== FILTER & SORT FUNCTIONALITY =====
+    function fixFilterButtons() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Apply filter
+                const filter = this.getAttribute('data-filter');
+                currentFilter = filter;
+                renderNames();
+            });
+        });
+    }
+
+    function sortNames(names) {
+        switch (currentSort) {
+            case 'az': return names.sort((a, b) => a.english.localeCompare(b.english));
+            case 'za': return names.sort((a, b) => b.english.localeCompare(a.english));
+            case 'origin': return names.sort((a, b) => a.origin.localeCompare(b.origin));
+            case 'meaning': return names.sort((a, b) => a.meaning.localeCompare(b.meaning));
+            default: return names;
+        }
+    }
+
+    // ===== SEARCH FUNCTIONALITY =====
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    function handleSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const suggestionsContainer = document.getElementById('suggestions');
+        
+        // Clear previous suggestions
+        suggestionsContainer.innerHTML = '';
+        suggestionsContainer.classList.add('hidden');
+        
+        if (searchTerm.length < 1) return;
+        
+        const matches = getSmartMatches(searchTerm);
+        
+        if (matches.length > 0) {
+            suggestionsContainer.classList.remove('hidden');
+            renderSuggestions(matches, searchTerm);
+        }
+    }
+
+    function getSmartMatches(searchTerm) {
+        return namesDatabase.filter(name => {
+             // Forbidden names filter
+        if (name.status === 'forbidden') return false;
+            const searchLower = searchTerm.toLowerCase();
+            return (
+                name.english.toLowerCase().includes(searchLower) ||
+                name.meaning.toLowerCase().includes(searchLower) ||
+                name.origin.toLowerCase().includes(searchLower) ||
+                name.arabic.includes(searchTerm) ||
+                name.urdu.includes(searchTerm) ||
+                name.english.toLowerCase().startsWith(searchLower) ||
+                name.pronunciation.toLowerCase().includes(searchLower)
+            );
+        }).slice(0, 8);
+    }
+
+    function renderSuggestions(matches, searchTerm) {
+        const suggestionsContainer = document.getElementById('suggestions');
+        
+        matches.forEach((name) => {
+            const li = document.createElement('li');
+            li.className = 'suggestion-item px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition-colors border-b border-gray-200 dark:border-gray-600 last:border-b-0';
+            li.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <div>
+                        <div class="font-semibold text-gray-900 dark:text-white">${highlightMatch(name.english, searchTerm)}</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            <span class="arabic-text">${name.arabic}</span> • ${name.meaning}
+                        </div>
+                    </div>
+                    <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded-full">${name.gender === 'boy' ? '👦' : '👧'}</span>
+                </div>
+            `;
+            
+            li.addEventListener('click', () => {
+                searchInput.value = name.english;
+                suggestionsContainer.classList.add('hidden');
+                openNameModal(name);
+            });
+            
+            suggestionsContainer.appendChild(li);
+        });
+    }
+
+    function highlightMatch(text, searchTerm) {
+        if (!searchTerm) return text;
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        return text.replace(regex, '<span class="text-accent font-bold">$1</span>');
+    }
+
+    // Search event listeners
+    searchInput.addEventListener('focus', handleSearch);
+
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                const matchedName = namesDatabase.find(name => 
+                    name.english.toLowerCase() === searchTerm.toLowerCase()
+                );
+                if (matchedName) {
+                    openNameModal(matchedName);
+                    document.getElementById('suggestions').classList.add('hidden');
+                }
+            }
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#search-input') && !e.target.closest('#suggestions')) {
+            document.getElementById('suggestions').classList.add('hidden');
+        }
+    });
+
+    // ===== RENDER FUNCTIONS =====
+    function renderNames(namesToRender = null) {
+        let names = namesToRender || namesDatabase;
+         //  Always filter forbidden names
+    names = names.filter(name => name.status !== 'forbidden');
+        
+        // Apply filter
+        if (currentFilter !== 'all') {
+            if (currentFilter === 'boy' || currentFilter === 'girl') {
+                names = names.filter(name => name.gender === currentFilter && name.status === 'allowed');
+            } else if (currentFilter === 'quranic') {
+                names = names.filter(name => name.quranic === true);
+            } else {
+                names = names.filter(name => name.origin.toLowerCase() === currentFilter && name.status === 'allowed');
+            }
+        } else {
+            names = names.filter(name => name.status === 'allowed');
+        }
+        
+        // Apply sort
+        names = sortNames(names);
+        
+        // Limit displayed names
+        const namesToShow = names.slice(0, displayedNames);
+        
+        // Clear grid
+        namesGrid.innerHTML = '';
+        
+        // Render names
+        if (namesToShow.length === 0) {
+            namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
+            return;
+        }
+        
+        namesToShow.forEach(name => {
+            const nameCard = createNameCard(name);
+            namesGrid.appendChild(nameCard);
+        });
+        
+        // Show/hide load more button
+        loadMoreBtn.classList.toggle('hidden', names.length <= displayedNames);
+    }
+
+    function renderQuranicNames() {
+    const quranicNames = namesDatabase.filter(name => name.quranic === true);
+    const quranicNamesToShow = quranicNames.slice(0, displayedQuranicNames);
+    
+    quranicNamesGrid.innerHTML = '';
+    quranicNamesToShow.forEach(name => {
+        const nameCard = createNameCard(name, true);
+        quranicNamesGrid.appendChild(nameCard);
+    });
+
+    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class use karo
+    const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
+    if (loadMoreQuranicBtn) {
+        loadMoreQuranicBtn.classList.toggle('hidden', quranicNames.length <= displayedQuranicNames);
+    }
+}
+
+function renderForbiddenNames() {
+    const forbiddenNames = namesDatabase.filter(name => name.status === 'forbidden');
+    const forbiddenNamesToShow = forbiddenNames.slice(0, displayedForbiddenNames);
+    
+    forbiddenNamesGrid.innerHTML = '';
+    forbiddenNamesToShow.forEach(name => {
+        const nameCard = createNameCard(name, false, true);
+        forbiddenNamesGrid.appendChild(nameCard);
+    });
+
+    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class use karo
+    const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
+    if (loadMoreForbiddenBtn) {
+        loadMoreForbiddenBtn.classList.toggle('hidden', forbiddenNames.length <= displayedForbiddenNames);
+    }
+}
+
+    function renderFavorites() {
+        favoritesGrid.innerHTML = '';
+        if (favorites.length === 0) {
+            emptyFavorites.classList.remove('hidden');
+            return;
+        }
+        emptyFavorites.classList.add('hidden');
+        favorites.forEach(favId => {
+            const name = namesDatabase.find(n => n.id === favId);
+            if (name) {
+                const nameCard = createNameCard(name, false, false, true);
+                favoritesGrid.appendChild(nameCard);
+            }
+        });
+    }
+
+    function createNameCard(name, isQuranic = false, isForbidden = false, isFavorite = false) {
+        const card = document.createElement('div');
+        card.className = `card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-in`;
+        
+        if (isQuranic) card.classList.add('quranic-card');
+        if (isForbidden) card.classList.add('forbidden-card');
+        
+        const genderIcon = name.gender === 'boy' ? '👦' : '👧';
+        const isFav = favorites.includes(name.id);
+        
+        card.innerHTML = `
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">${name.english}</h3>
+                    <button class="favorite-btn p-1 rounded-full ${isFav ? 'text-accent' : 'text-gray-400 hover:text-accent'}" data-id="${name.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${isFav ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="arabic text-2xl mb-2 text-right">${name.arabic}</div>
+                
+                <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <span>${name.urdu}</span>
+                    <span>${name.persian}</span>
+                </div>
+                
+                <p class="text-sm italic mb-2">${name.pronunciation}</p>
+                <p class="text-sm mb-4 line-clamp-2">${name.meaning}</p>
+                
+                <div class="flex justify-between items-center">
+                    <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">${name.origin}</span>
+                    <div class="flex items-center">
+                        <span class="mr-2">${genderIcon}</span>
+                        ${isForbidden ? '<span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Forbidden</span>' : ''}
+                        ${name.quranic ? '<span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Quranic</span>' : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Add event listeners
+        const favoriteBtn = card.querySelector('.favorite-btn');
+        favoriteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleFavorite(name.id);
+        });
+        
+        card.addEventListener('click', () => {
+            openNameModal(name);
+        });
+        
+        return card;
+    }
+
+    // ===== FAVORITES FUNCTIONALITY =====
+    function toggleFavorite(nameId) {
+        const index = favorites.indexOf(nameId);
+        
+        if (index === -1) {
+            favorites.push(nameId);
+            showFavoriteFeedback('added');
+        } else {
+            favorites.splice(index, 1);
+            showFavoriteFeedback('removed');
+        }
+        
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        updateAllFavoriteButtons(nameId);
+        renderFavorites();
+        
+        if (currentNameInModal && currentNameInModal.id === nameId) {
+            updateModalFavoriteButton(nameId);
+        }
+    }
+
+    function updateAllFavoriteButtons(nameId) {
+        const isFav = favorites.includes(nameId);
+        const favoriteBtns = document.querySelectorAll(`.favorite-btn[data-id="${nameId}"]`);
+        
+        favoriteBtns.forEach(btn => {
+            const svg = btn.querySelector('svg');
+            if (isFav) {
+                btn.classList.add('text-accent');
+                svg.setAttribute('fill', 'currentColor');
+            } else {
+                btn.classList.remove('text-accent');
+                svg.setAttribute('fill', 'none');
+            }
+        });
+    }
+
+    function updateModalFavoriteButton(nameId) {
+        const isFav = favorites.includes(nameId);
+        const favoriteText = modalFavorite.querySelector('span');
+        
+        if (isFav) {
+            modalFavorite.classList.add('text-accent');
+            favoriteText.innerHTML = 'Remove from Favorites';
+        } else {
+            modalFavorite.classList.remove('text-accent');
+            favoriteText.innerHTML = 'Add to Favorites';
+        }
+    }
+
+    function toggleFavoriteInModal() {
+        if (currentNameInModal) {
+            toggleFavorite(currentNameInModal.id);
+        }
+    }
+
+    function showFavoriteFeedback(action) {
+        const message = action === 'added' ? 'Added to favorites!' : 'Removed from favorites';
+        const bgColor = action === 'added' ? 'bg-green-500' : 'bg-red-500';
+        
+        // Remove existing feedback
+        const existingFeedback = document.querySelector('.favorite-feedback');
+        if (existingFeedback) existingFeedback.remove();
+        
+        // Create feedback
+        const feedback = document.createElement('div');
+        feedback.className = `favorite-feedback fixed top-4 right-4 px-4 py-3 rounded-lg ${bgColor} text-white shadow-lg z-50`;
+        feedback.innerHTML = `
+            <div class="flex items-center">
+                <span class="mr-2">${action === 'added' ? '❤️' : '💔'}</span>
+                <span class="text-sm font-medium">${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(feedback);
+        
+        // Auto remove after 2 seconds
+        setTimeout(() => {
+            feedback.remove();
+        }, 2000);
+    }
+
+    // ===== MODAL FUNCTIONALITY =====
+    function openNameModal(name) {
+        currentNameInModal = name;
+        document.getElementById('modal-name').textContent = name.english;
+        document.getElementById('modal-arabic').textContent = name.arabic;
+        document.getElementById('modal-urdu').textContent = name.urdu;
+        document.getElementById('modal-persian').textContent = name.persian;
+        document.getElementById('modal-pronunciation').textContent = name.pronunciation;
+        document.getElementById('modal-meaning').textContent = name.meaning;
+        document.getElementById('modal-origin').textContent = name.origin;
+        
+        const ayahContainer = document.getElementById('modal-ayah-container');
+        const ayahElement = document.getElementById('modal-ayah');
+        if (name.quranic && name.ayah) {
+            ayahContainer.classList.remove('hidden');
+            ayahElement.textContent = name.ayah;
+        } else {
+            ayahContainer.classList.add('hidden');
+        }
+        
+        updateModalFavoriteButton(name.id);
+        nameModal.classList.remove('hidden');
+    }
+
+    function closeNameModal() {
+        nameModal.classList.add('hidden');
+        currentNameInModal = null;
+    }
+
+    function copyName() {
+        if (currentNameInModal) {
+            const textToCopy = `${currentNameInModal.english} (${currentNameInModal.arabic}) - ${currentNameInModal.meaning}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalHTML = modalCopy.innerHTML;
+                modalCopy.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                `;
+                setTimeout(() => { modalCopy.innerHTML = originalHTML; }, 2000);
+            });
+        }
+    }
+
+    function shareName() {
+        if (currentNameInModal && navigator.share) {
+            navigator.share({
+                title: `Islamic Name: ${currentNameInModal.english}`,
+                text: `Check out this beautiful Islamic name: ${currentNameInModal.english} (${currentNameInModal.arabic}) - ${currentNameInModal.meaning}`,
+                url: window.location.href
+            });
+        } else {
+            copyName();
+        }
+    }
+
+    function playPronunciation() {
+        if (currentNameInModal && 'speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.8;
+            speechSynthesis.speak(utterance);
+        }
+    }
+
+    // ===== UTILITY FUNCTIONS =====
+    function showRandomName() {
+        const allowedNames = namesDatabase.filter(name => name.status === 'allowed');
+        const randomIndex = Math.floor(Math.random() * allowedNames.length);
+        const randomName = allowedNames[randomIndex];
+        openNameModal(randomName);
+    }
+
+    function loadMoreNames() {
+        displayedNames += 12;
+        renderNames();
+    }
+    // Professional Contact Form Handler
+function handleContactForm(e) {
+    e.preventDefault();
+    
+    const btn = e.target.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    
+    // Loading state
+    btn.innerHTML = `
+        <svg class="animate-spin w-5 h-5 mr-2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
+            <path fill="currentColor" class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Sending Message...
+    `;
+    btn.disabled = true;
+
+    // Simulate API call
+    setTimeout(() => {
+        const success = Math.random() > 0.2;
+        
+        if (success) {
+            showPopup('Message Sent Successfully!', 'We will get back to you within 24 hours.', 'success');
+            e.target.reset();
+        } else {
+            showPopup('Message Failed!', 'Please try again or contact us directly.', 'error');
+        }
+        
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }, 1500);
+}
+
+// Beautiful Popup Modal
+function showPopup(title, message, type) {
+    const popup = document.createElement('div');
+    const isSuccess = type === 'success';
+    
+    popup.innerHTML = `
+        <div class="fixed inset-0 flex items-center justify-center z-50 px-4">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-sm w-full mx-auto relative transform transition-all duration-300 scale-95 opacity-0 shadow-xl">
+                <div class="text-center mb-4">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center ${isSuccess ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}">
+                        ${isSuccess ? '✓' : '✕'}
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">${title}</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mt-2">${message}</p>
+                </div>
+                <button onclick="this.closest('.fixed').remove()" 
+                        class="w-full ${isSuccess ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'} text-white py-3 rounded-lg font-semibold transition-colors">
+                    Continue
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(popup);
+    
+    // Animate in
+    setTimeout(() => {
+        const modal = popup.querySelector('.rounded-xl');
+        modal.classList.remove('scale-95', 'opacity-0');
+        modal.classList.add('scale-100', 'opacity-100');
+    }, 10);
+}
+
+    // ===== INITIALIZE APPLICATION =====
+    document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
