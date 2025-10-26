@@ -5628,6 +5628,10 @@
             themeSelector.value = savedColorTheme;
         }
         
+        // Init function mein ye line add karo
+        document.documentElement.style.colorScheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+
+        
         // Render names
         renderNames();
         renderQuranicNames();
