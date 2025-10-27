@@ -4958,7 +4958,7 @@ const normalNames = [
     "arabic": "پريزاد",
     "urdu": "پریزاد",
     "persian": "پریزاد",
-    "meaning": "Fairy-born, celestial being, offspring of fairies. Represents someone with extraordinary beauty and grace.",
+    "meaning": "Fairy-born, Represents someone with extraordinary beauty and grace.",
     "origin": "Persian",
     "pronunciation": "Pa-ri-zad",
     "gender": "girl",
