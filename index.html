@@ -792,7 +792,7 @@
     <nav class="glassmorphism sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
 <a href="#home" class="flex items-baseline gap-1 sm:gap-2 flex-shrink-0 min-w-0">
-    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text truncate min-w-0">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text animate-gradient truncate min-w-0">
         N<span style="text-decoration: overline; font-size: 0.95em; display: inline-block; padding-top: 1px">ū</span>r<span class="text-accent">Names</span>
     </h1>
     <span class="text-[8px] sm:text-[9px] border border-current text-current px-1 py-0.5 rounded-full font-mono font-bold tracking-wide uppercase self-start mt-0.5 bg-transparent flex-shrink-0">BETA</span>
@@ -803,8 +803,10 @@
 .gradient-text {
   background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700, #FFA500);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
+  animation: gradientAnimation 3s linear infinite;
 }
 
 /* Animation */
