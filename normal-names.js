@@ -6033,16 +6033,16 @@ const normalNames = [
 },
 {
     "id": 515,
-    "english": "Ayesha",
-    "arabic": "عاﺋشه",
-    "urdu": "عاﺋشه",
-    "persian": "عاﺋشه",
-    "meaning": "Living, well-off, well-to-do, prosperous. Aisha (d.678): wife of the Prophet Muhammad and daughter of Kahlifa Abu Bakr",
-    "origin": "Arabic",
-    "pronunciation": "A-ye-sha",
+    "english": "Zeenat",
+    "arabic": "زینت",
+    "urdu": "زینت",
+    "persian": "زینت",
+    "meaning": "Beauty, adornment, elegance, grace. This name signifies something or someone who is an ornament and adds beauty to the world around them.",
+    "origin": "Urdu (Derived from Arabic)",
+    "pronunciation": "Zee-nat",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 516,
