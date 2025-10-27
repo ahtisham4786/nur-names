@@ -1889,16 +1889,22 @@ function renderForbiddenNames() {
         }
     }
 //==== Pronunciation Model ====
-    function playPronunciation() {
-        if (currentNameInModal && 'speechSynthesis' in window) {
-            const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
-            utterance.lang = 'en-IN';   // Indian English
-            utterance.rate = 0.88;
-            utterance.pitch = 1.05;
-            speechSynthesis.speak(utterance);
-        }
-    }
+function playPronunciation() {
+    if (currentNameInModal && 'speechSynthesis' in window) {
+        // 🛑 Stop any ongoing speech to avoid overlap
+        speechSynthesis.cancel();
 
+        // 🎙️ Create new utterance
+        const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
+        utterance.lang = 'en-IN';    // Indian English (best balance)
+        utterance.rate = 0.88;       // slightly slower for natural flow
+        utterance.pitch = 1.05;      // soft, warm tone
+        utterance.volume = 1;        // full sound
+
+        // 🔊 Speak it out
+        speechSynthesis.speak(utterance);
+    }
+}
     // ===== UTILITY FUNCTIONS =====
     function showRandomName() {
         const allowedNames = namesDatabase.filter(name => name.status === 'allowed');
