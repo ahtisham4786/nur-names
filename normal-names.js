@@ -6037,7 +6037,7 @@ const normalNames = [
     "arabic": "زینت",
     "urdu": "زینت",
     "persian": "زینت",
-    "meaning": "Beauty, adornment, elegance, grace. This name signifies something or someone who is an ornament and adds beauty to the world around them.",
+    "meaning": "Beauty, adornment, elegance, grace.",
     "origin": "Urdu (Derived from Arabic)",
     "pronunciation": "Zee-nat",
     "gender": "girl",
