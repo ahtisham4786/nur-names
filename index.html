@@ -1892,8 +1892,9 @@ function renderForbiddenNames() {
     function playPronunciation() {
         if (currentNameInModal && 'speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
-            utterance.lang = 'en-GB';
-            utterance.rate = 0.85;
+            utterance.lang = 'en-IN';   // Indian English
+            utterance.rate = 0.88;
+            utterance.pitch = 1.05;
             speechSynthesis.speak(utterance);
         }
     }
