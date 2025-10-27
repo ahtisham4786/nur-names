@@ -1654,7 +1654,7 @@ console.log("Total Names:", namesDatabase.length);
         quranicNamesGrid.appendChild(nameCard);
     });
 
-    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class use karo
+    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class used
     const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
     if (loadMoreQuranicBtn) {
         loadMoreQuranicBtn.classList.toggle('hidden', quranicNames.length <= displayedQuranicNames);
@@ -1671,7 +1671,7 @@ function renderForbiddenNames() {
         forbiddenNamesGrid.appendChild(nameCard);
     });
 
-    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class use karo
+    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class used
     const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
     if (loadMoreForbiddenBtn) {
         loadMoreForbiddenBtn.classList.toggle('hidden', forbiddenNames.length <= displayedForbiddenNames);
@@ -1892,7 +1892,7 @@ function renderForbiddenNames() {
     function playPronunciation() {
         if (currentNameInModal && 'speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
-            utterance.lang = 'ur-PK';
+            utterance.lang = 'en-GB';
             utterance.rate = 0.85;
             speechSynthesis.speak(utterance);
         }
