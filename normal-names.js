@@ -6096,5 +6096,6 @@ const normalNames = [
     "status": "allowed",
     "quranic": false
 },
+
     // ... continue with remaining names
 ];
