@@ -1924,17 +1924,17 @@ const normalNames = [
     quranic: false
 },
 {
-    id: 149,
-    english: "Zaryab",
-    arabic: "زارياب",
-    urdu: "زاریاب",
-    persian: "زاریاب",
-    meaning: "Golden Water",
-    origin: "Persian",
-    pronunciation: "Za-ryab",
-    gender: "boy",
-    status: "allowed",
-    quranic: false
+    "id": 149,
+    "english": "Zarrar",
+    "arabic": "ضرار",
+    "urdu": "ضرار",
+    "persian": "ضرار",
+    "meaning": "A sharp and brave attacker.",
+    "origin": "Arabic",
+    "pronunciation": "Zur-raar",
+    "gender": "boy",
+    "status": "allowed",
+    "quranic": false
 },
 {
     id: 150,
