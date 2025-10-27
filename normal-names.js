@@ -4954,16 +4954,16 @@ const normalNames = [
 },
 {
     "id": 432,
-    "english": "Amina",
-    "arabic": "آمنه",
-    "urdu": "آمنه",
-    "persian": "آمنه",
-    "meaning": "Safe, secure, protected, a lady of peace and harmony. Name of the beloved mother of the Prophet Muhammad",
-    "origin": "Arabic",
-    "pronunciation": "A-mi-na",
+    "english": "Parizad",
+    "arabic": "پريزاد",
+    "urdu": "پریزاد",
+    "persian": "پریزاد",
+    "meaning": "Fairy-born, celestial being, offspring of fairies. Represents someone with extraordinary beauty and grace.",
+    "origin": "Persian",
+    "pronunciation": "Pa-ri-zad",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 433,
