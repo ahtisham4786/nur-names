@@ -1198,6 +1198,10 @@
                         <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Origin</h4>
                         <p id="modal-origin"></p>
                     </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Gender</h4>
+                        <p id="modal-gender" class="text-lg"></p>
+                    </div>
                     
                     <div id="modal-ayah-container" class="hidden">
                         <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-1">Quranic Reference</h4>
@@ -1836,6 +1840,7 @@ function renderForbiddenNames() {
         document.getElementById('modal-pronunciation').textContent = name.pronunciation;
         document.getElementById('modal-meaning').textContent = name.meaning;
         document.getElementById('modal-origin').textContent = name.origin;
+        document.getElementById('modal-gender').textContent = name.gender === 'boy' ? '👦 Boy' : '👧 Girl';
         
         const ayahContainer = document.getElementById('modal-ayah-container');
         const ayahElement = document.getElementById('modal-ayah');
