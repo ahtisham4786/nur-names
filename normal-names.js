@@ -5010,7 +5010,7 @@ const normalNames = [
     "arabic": "امنه",
     "urdu": "امنه",
     "persian": "امنه",
-    "meaning": "Safety,Peace ,Safe One,Protected One",
+    "meaning": "Safety,Peace,",
     "origin": "Arabic",
     "pronunciation": "Am-na",
     "gender": "girl",
