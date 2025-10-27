@@ -1888,11 +1888,11 @@ function renderForbiddenNames() {
             copyName();
         }
     }
-
+//==== Pronunciation Model ====
     function playPronunciation() {
         if (currentNameInModal && 'speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
-            utterance.lang = 'en-US';
+            utterance.lang = 'ar-SA';
             utterance.rate = 0.8;
             speechSynthesis.speak(utterance);
         }
