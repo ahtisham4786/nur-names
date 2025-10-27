@@ -175,58 +175,16 @@
     }
 
     /* Glassmorphism */
-        /* ===== HYPER-REALISTIC GLASS EFFECT ===== */
-.glassmorphism {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.25) 0%,
-        rgba(255, 255, 255, 0.15) 30%,
-        rgba(255, 255, 255, 0.05) 70%,
-        rgba(255, 255, 255, 0.15) 100%);
-    backdrop-filter: blur(25px) saturate(200%) brightness(110%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(110%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.1),
-        0 3px 10px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-
-
-/* DARK THEME - PREMIUM FROSTED GLASS */
-.dark .glassmorphism {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.08) 0%,
-        rgba(255, 255, 255, 0.03) 30%,
-        rgba(255, 255, 255, 0.01) 70%,
-        rgba(255, 255, 255, 0.05) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.3),
-        0 3px 10px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-}
-
-.dark .glassmorphism::before {
-    background: linear-gradient(45deg, 
-        transparent 30%, 
-        rgba(255, 255, 255, 0.15) 50%, 
-        transparent 70%);
-}
-
-
-/* PERFORMANCE */
-@media (prefers-reduced-motion: reduce) {
-    .glassmorphism::before {
-        animation: none;
+       .glassmorphism {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
-}
-/*End Glasseffect/
+    
+    .dark .glassmorphism {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
     /* Accent Glow System */
     .accent-glow {
