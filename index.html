@@ -1248,6 +1248,13 @@
             ...quranicNames, 
             ...forbiddenNames
         ];
+        //  AUTOMATIC FIX IDs
+        (function() {
+    let counter = 1;
+    namesDatabase.forEach(name => name.id = `auto-${counter++}`);
+    localStorage.removeItem('favorites');
+    window.favorites = [];
+         })();
 
         console.log("📊 Names Loaded:");
         console.log("Normal Names:", normalNames.length);
