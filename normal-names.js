@@ -10377,9 +10377,9 @@ const normalNames = [
 {
     "id": 855,
     "english": "Maaz",
-    "arabic": "مَاعِز",
-    "urdu": "ماعز",
-    "persian": "ماعز",
+    "arabic": "معاذ",
+    "urdu": "معاذ",
+    "persian": "معاذ",
     "meaning": "Brave man",
     "origin": "Arabic",
     "pronunciation": "Ma-az",
