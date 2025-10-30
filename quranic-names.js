@@ -1,6 +1,6 @@
 const quranicNames = [
     {
-        id: 1,
+        id: 1000,
         english: "Muhammad",
         arabic: "محمد",
         urdu: "محمد",
@@ -14,7 +14,7 @@ const quranicNames = [
         ayah: "Surah Al-Imran 3:144"
     },
     {
-        id: 2,
+        id: 1001,
         english: "Ibrahim",
         arabic: "إبراهيم",
         urdu: "ابراہیم",
@@ -28,7 +28,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:124"
     },
     {
-        id: 3,
+        id: 1002,
         english: "Yusuf",
         arabic: "يوسف",
         urdu: "یوسف",
@@ -42,7 +42,7 @@ const quranicNames = [
         ayah: "Surah Yusuf 12:4"
     },
     {
-        id: 4,
+        id: 1003,
         english: "Maryam",
         arabic: "مريم",
         urdu: "مریم",
@@ -56,7 +56,7 @@ const quranicNames = [
         ayah: "Surah Maryam 19:16"
     },
     {
-        id: 5,
+        id: 1004,
         english: "Musa",
         arabic: "موسى",
         urdu: "موسیٰ",
@@ -70,7 +70,7 @@ const quranicNames = [
         ayah: "Surah Taha 20:9"
     },
     {
-        id: 6,
+        id: 1005,
         english: "Isa",
         arabic: "عيسى",
         urdu: "عیسیٰ",
@@ -84,7 +84,7 @@ const quranicNames = [
         ayah: "Surah Al-Imran 3:45"
     },
     {
-        id: 7,
+        id: 1006,
         english: "Yunus",
         arabic: "يونس",
         urdu: "یونس",
@@ -98,7 +98,7 @@ const quranicNames = [
         ayah: "Surah Yunus 10:98"
     },
     {
-        id: 8,
+        id: 1007,
         english: "Zakariya",
         arabic: "زكريا",
         urdu: "زکریا",
@@ -112,7 +112,7 @@ const quranicNames = [
         ayah: "Surah Maryam 19:2"
     },
     {
-        id: 9,
+        id: 1008,
         english: "Adam",
         arabic: "آدم",
         urdu: "آدم",
@@ -126,7 +126,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:31"
     },
     {
-        id: 10,
+        id: 1009,
         english: "Idris",
         arabic: "إدريس",
         urdu: "ادریس",
@@ -140,7 +140,7 @@ const quranicNames = [
         ayah: "Surah Maryam 19:56"
     },
     {
-        id: 11,
+        id: 1010,
         english: "Haroon",
         arabic: "هارون",
         urdu: "ہارون",
@@ -154,7 +154,7 @@ const quranicNames = [
         ayah: "Surah Maryam 19:53"
     },
     {
-        id: 12,
+        id: 1011,
         english: "Sulaiman",
         arabic: "سليمان",
         urdu: "سلیمان",
@@ -168,7 +168,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:102"
     },
     {
-        id: 13,
+        id: 1012,
         english: "Dawud",
         arabic: "داود",
         urdu: "داؤد",
@@ -182,7 +182,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:251"
     },
     {
-        id: 14,
+        id: 1013,
         english: "Yahya",
         arabic: "يحيى",
         urdu: "یحییٰ",
@@ -196,7 +196,7 @@ const quranicNames = [
         ayah: "Surah Maryam 19:7"
     },
     {
-        id: 15,
+        id: 1014,
         english: "Ismail",
         arabic: "إسماعيل",
         urdu: "اسماعیل",
@@ -210,7 +210,7 @@ const quranicNames = [
         ayah: "Surah Maryam 19:54"
     },
     {
-        id: 16,
+        id: 1015,
         english: "Yaqoob",
         arabic: "يعقوب",
         urdu: "یعقوب",
@@ -224,7 +224,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:132"
     },
     {
-        id: 17,
+        id: 1016,
         english: "Luqman",
         arabic: "لقمان",
         urdu: "لقمان",
@@ -238,7 +238,7 @@ const quranicNames = [
         ayah: "Surah Luqman 31:12"
     },
     {
-        id: 18,
+        id: 1017,
         english: "Tariq",
         arabic: "طارق",
         urdu: "طارق",
@@ -252,7 +252,7 @@ const quranicNames = [
         ayah: "Surah At-Tariq 86:1"
     },
     {
-        id: 19,
+        id: 1018,
         english: "Noor",
         arabic: "نور",
         urdu: "نور",
@@ -266,7 +266,7 @@ const quranicNames = [
         ayah: "Surah An-Nur 24:35"
     },
     {
-        id: 20,
+        id: 1019,
         english: "Jannat",
         arabic: "جنة",
         urdu: "جنت",
@@ -280,7 +280,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:25"
     },
     {
-        id: 21,
+        id: 1020,
         english: "Rayyan",
         arabic: "ريّان",
         urdu: "ریان",
@@ -294,7 +294,7 @@ const quranicNames = [
         ayah: "Sahih Muslim 1152"
     },
     {
-        id: 22,
+        id: 1021,
         english: "Abrar",
         arabic: "أبرار",
         urdu: "ابرار",
@@ -308,7 +308,7 @@ const quranicNames = [
         ayah: "Surah Al-Insan 76:5"
     },
     {
-        id: 23,
+        id: 1022,
         english: "Firdaus",
         arabic: "فردوس",
         urdu: "فردوس",
@@ -322,7 +322,7 @@ const quranicNames = [
         ayah: "Surah Al-Kahf 18:107"
     },
     {
-        id: 24,
+        id: 1023,
         english: "Mubeen",
         arabic: "مبين",
         urdu: "مبین",
@@ -336,7 +336,7 @@ const quranicNames = [
         ayah: "Surah An-Nur 24:1"
     },
     {
-        id: 25,
+        id: 1024,
         english: "Shahid",
         arabic: "شهيد",
         urdu: "شہید",
@@ -350,7 +350,7 @@ const quranicNames = [
         ayah: "Surah Al-Baqarah 2:143"
     },
     {
-        id: 26,
+        id: 1025,
         english: "Zimal",
         arabic: "زمل",
         urdu: "زمل",
@@ -364,7 +364,7 @@ const quranicNames = [
         ayah: "Surah Al-A'raf 7:26"
     },
     {
-        id: 27,
+        id: 1026,
         english: "Nuh",
         arabic: "نوح",
         urdu: "نوح",
@@ -378,7 +378,7 @@ const quranicNames = [
         ayah: "Surah Nuh 71:1"
     },
     {
-        id: 28,
+        id: 1027,
         english: "Hud",
         arabic: "هود",
         urdu: "ہود",
@@ -392,7 +392,7 @@ const quranicNames = [
         ayah: "Surah Hud 11:50"
     },
     {
-        id: 29,
+        id: 1028,
         english: "Salih",
         arabic: "صالح",
         urdu: "صالح",
@@ -406,7 +406,7 @@ const quranicNames = [
         ayah: "Surah Ash-Shu'ara 26:142"
     },
     {
-        id: 30,
+        id: 1029,
         english: "Shuaib",
         arabic: "شعيب",
         urdu: "شعیب",
@@ -420,7 +420,7 @@ const quranicNames = [
         ayah: "Surah Al-A'raf 7:85"
     },
     {
-        id: 31,
+        id: 1030,
         english: "Ayyub",
         arabic: "أيوب",
         urdu: "ایوب",
@@ -434,7 +434,7 @@ const quranicNames = [
         ayah: "Surah An-Nisa 4:163"
     },
     {
-        id: 32,
+        id: 1031,
         english: "Ayat",
         arabic: "آيات",
         urdu: "آیات",
@@ -448,7 +448,7 @@ const quranicNames = [
         ayah: "Surah Fussilat 41:53"
     },
     {
-        id: 33,
+        id: 1032,
         english: "Barakah",
         arabic: "بركة",
         urdu: "برکت",
@@ -462,7 +462,7 @@ const quranicNames = [
         ayah: "Surah Al-A'raf 7:96"
     },
     {
-        id: 34,
+        id: 1033,
         english: "Fajar",
         arabic: "فجر",
         urdu: "فجر",
@@ -476,7 +476,7 @@ const quranicNames = [
         ayah: "Surah Al-Fajr 89:1"
     },
     {
-        id: 35,
+        id: 1034,
         english: "Hadi",
         arabic: "هادي",
         urdu: "ہادی",
@@ -490,7 +490,7 @@ const quranicNames = [
         ayah: "Surah Al-Furqan 25:31"
     },
     {
-        id: 36,
+        id: 1035,
         english: "Iman",
         arabic: "إيمان",
         urdu: "ایمان",
@@ -504,7 +504,7 @@ const quranicNames = [
         ayah: "Surah Al-Hujurat 49:7"
     },
     {
-        id: 37,
+        id: 1036,
         english: "Kawthar",
         arabic: "كوثر",
         urdu: "کوثر",
@@ -518,7 +518,7 @@ const quranicNames = [
         ayah: "Surah Al-Kawthar 108:1"
     },
     {
-        id: 38,
+        id: 1037,
         english: "Lut",
         arabic: "لوط",
         urdu: "لوط",
@@ -532,7 +532,7 @@ const quranicNames = [
         ayah: "Surah Ash-Shu'ara 26:160"
     },
     {
-        id: 39,
+        id: 1038,
         english: "Yaseen",
         arabic: "يٰسٓ",
         urdu: "یٰسٓ",
@@ -544,5 +544,5 @@ const quranicNames = [
         status: "allowed",
         quranic: true,
         ayah: "Surah Ya-Sin 36:1"
-    }
+    },
 ];
