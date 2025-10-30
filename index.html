@@ -1249,13 +1249,11 @@
             ...forbiddenNames
         ];
         //  AUTOMATIC FIX IDs
-         (function() {
-         namesDatabase.forEach((name, index) => {
-        name.id = `name-${index + 1}`;
-        });
-         localStorage.removeItem('favorites');
-          window.favorites = [];
-        })();
+        for (let i = 0; i < namesDatabase.length; i++) {
+    namesDatabase[i].id = i + 1;
+}
+localStorage.removeItem('favorites');
+favorites = [];
 
         console.log("📊 Names Loaded:");
         console.log("Normal Names:", normalNames.length);
