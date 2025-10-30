@@ -12259,6 +12259,7 @@ const normalNames = [
     "status": "allowed",
     "quranic": false
 },
+    //==IDs 1000 to 1038 are present in Quranic names==
 
     // ... continue with remaining names
 ];
