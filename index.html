@@ -1245,747 +1245,751 @@
 
     <!-- JavaScript -->
     <script>
-// ===== COMBINE ALL NAMES =====
-const namesDatabase = [
-    ...normalNames,
-    ...quranicNames, 
-    ...forbiddenNames
-];
+        // ===== COMBINE ALL NAMES =====
+        const namesDatabase = [
+            ...normalNames,
+            ...quranicNames, 
+            ...forbiddenNames
+        ];
 
-console.log("📊 Names Loaded:");
-console.log("Normal Names:", normalNames.length);
-console.log("Quranic Names:", quranicNames.length);
-console.log("Forbidden Names:", forbiddenNames.length);
-console.log("Total Names:", namesDatabase.length);
+        console.log("📊 Names Loaded:");
+        console.log("Normal Names:", normalNames.length);
+        console.log("Quranic Names:", quranicNames.length);
+        console.log("Forbidden Names:", forbiddenNames.length);
+        console.log("Total Names:", namesDatabase.length);
 
-    // ===== DOM ELEMENTS =====
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeSelector = document.getElementById('theme-selector');
-    const searchInput = document.getElementById('search-input');
-    const exploreBtn = document.getElementById('explore-btn');
-    const sortSelect = document.getElementById('sort-select');
-    const randomNameBtn = document.getElementById('random-name');
-    const loadMoreBtn = document.getElementById('load-more');
-    const namesGrid = document.getElementById('names-grid');
-    const quranicNamesGrid = document.getElementById('quranic-names-grid');
-    const forbiddenNamesGrid = document.getElementById('forbidden-names-grid');
-    const favoritesGrid = document.getElementById('favorites-grid');
-    const emptyFavorites = document.getElementById('empty-favorites');
-    const contactForm = document.getElementById('contact-form');
-    const nameModal = document.getElementById('name-modal');
-    const closeModal = document.getElementById('close-modal');
-    const modalFavorite = document.getElementById('modal-favorite');
-    const modalCopy = document.getElementById('modal-copy');
-    const modalShare = document.getElementById('modal-share');
-    const modalAudio = document.getElementById('modal-audio');
+        // ===== DOM ELEMENTS =====
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeSelector = document.getElementById('theme-selector');
+        const searchInput = document.getElementById('search-input');
+        const exploreBtn = document.getElementById('explore-btn');
+        const sortSelect = document.getElementById('sort-select');
+        const randomNameBtn = document.getElementById('random-name');
+        const loadMoreBtn = document.getElementById('load-more');
+        const namesGrid = document.getElementById('names-grid');
+        const quranicNamesGrid = document.getElementById('quranic-names-grid');
+        const forbiddenNamesGrid = document.getElementById('forbidden-names-grid');
+        const favoritesGrid = document.getElementById('favorites-grid');
+        const emptyFavorites = document.getElementById('empty-favorites');
+        const contactForm = document.getElementById('contact-form');
+        const nameModal = document.getElementById('name-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalFavorite = document.getElementById('modal-favorite');
+        const modalCopy = document.getElementById('modal-copy');
+        const modalShare = document.getElementById('modal-share');
+        const modalAudio = document.getElementById('modal-audio');
 
-    // ===== STATE VARIABLES =====
-    let currentFilter = 'all';
-    let currentSort = 'az';
-    let displayedNames = 12;
-    let displayedQuranicNames = 12;
-    let displayedForbiddenNames = 12;
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    let currentNameInModal = null;
+        // ===== STATE VARIABLES =====
+        let currentFilter = 'all';
+        let currentSort = 'az';
+        let displayedNames = 12;
+        let displayedQuranicNames = 12;
+        let displayedForbiddenNames = 12;
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        let currentNameInModal = null;
 
-    // ===== INITIALIZATION =====
-    function init() {
-        // Apply saved theme
-        document.documentElement.classList.remove('dark');
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+        // ===== INITIALIZATION =====
+        function init() {
+            // Apply saved theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
 
-        if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-        }
-
-        if (savedColorTheme !== 'default') {
-            document.documentElement.classList.add(`theme-${savedColorTheme}`);
-            themeSelector.value = savedColorTheme;
-        }
-        
-        // Init function mein ye line add karo
-        document.documentElement.style.colorScheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-
-        
-        // Render names
-        renderNames();
-        renderQuranicNames();
-        renderForbiddenNames();
-        renderFavorites();
-        
-        // Set up event listeners
-        setupEventListeners();
-        
-        // Fix filter buttons
-        setTimeout(fixFilterButtons, 100);
-    }
-
-    // ===== EVENT LISTENERS SETUP =====
-    function setupEventListeners() {
-        // Theme functionality
-        themeToggle.addEventListener('click', toggleTheme);
-        themeSelector.addEventListener('change', changeColorTheme);
-        
-        // Mobile menu functionality
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMobileMenu();
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            
-            if (!mobileMenu.classList.contains('hidden') && 
-                !e.target.closest('#mobile-menu') && 
-                !e.target.closest('#mobile-menu-toggle')) {
-                
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
             }
-        });
 
-        // Close menu when clicking links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
+            if (savedColorTheme !== 'default') {
+                document.documentElement.classList.add(`theme-${savedColorTheme}`);
+                themeSelector.value = savedColorTheme;
+            }
+            
+            // Render names
+            renderNames();
+            renderQuranicNames();
+            renderForbiddenNames();
+            renderFavorites();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Fix filter buttons
+            setTimeout(fixFilterButtons, 100);
+        }
+
+        // ===== EVENT LISTENERS SETUP =====
+        function setupEventListeners() {
+            // Theme functionality
+            themeToggle.addEventListener('click', toggleTheme);
+            themeSelector.addEventListener('change', changeColorTheme);
+            
+            // Mobile menu functionality
+            document.getElementById('mobile-menu-toggle').addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
                 const mobileMenu = document.getElementById('mobile-menu');
                 const menuIcon = document.getElementById('menu-icon');
                 const closeIcon = document.getElementById('close-icon');
                 
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !e.target.closest('#mobile-menu') && 
+                    !e.target.closest('#mobile-menu-toggle')) {
+                    
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+
+            // Close menu when clicking links
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const menuIcon = document.getElementById('menu-icon');
+                    const closeIcon = document.getElementById('close-icon');
+                    
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+            
+            // Explore button
+            exploreBtn.addEventListener('click', () => {
+                document.getElementById('names').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Sort functionality
+            sortSelect.addEventListener('change', () => {
+                currentSort = sortSelect.value;
+                renderNames();
+            });
+            
+            // Random name generator
+            randomNameBtn.addEventListener('click', showRandomName);
+            
+            // Load more names
+            loadMoreBtn.addEventListener('click', loadMoreNames);
+            
+            // Load More buttons for Quranic and Forbidden names
+            const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
+            const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
+
+            if (loadMoreQuranicBtn) {
+                loadMoreQuranicBtn.addEventListener('click', function() {
+                    displayedQuranicNames += 12;
+                    renderQuranicNames();
+                });
+            }
+
+            if (loadMoreForbiddenBtn) {
+                loadMoreForbiddenBtn.addEventListener('click', function() {
+                    displayedForbiddenNames += 12;
+                    renderForbiddenNames();
+                });
+            }
+            
+            // Contact form
+            contactForm.addEventListener('submit', handleContactForm);
+            
+            // Modal functionality
+            closeModal.addEventListener('click', closeNameModal);
+            modalFavorite.addEventListener('click', toggleFavoriteInModal);
+            modalCopy.addEventListener('click', copyName);
+            modalShare.addEventListener('click', shareName);
+            modalAudio.addEventListener('click', playPronunciation);
+            
+            // Close modal when clicking outside
+            nameModal.addEventListener('click', (e) => {
+                if (e.target === nameModal) {
+                    closeNameModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !nameModal.classList.contains('hidden')) {
+                    closeNameModal();
+                }
+            });
+        }
+
+        // ===== MOBILE MENU =====
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                // Open menu
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                // Close menu
                 mobileMenu.classList.add('hidden');
                 menuIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
-            });
-        });
-        
-        // Search functionality
-        searchInput.addEventListener('input', debounce(handleSearch, 300));
-        
-        // Explore button
-        exploreBtn.addEventListener('click', () => {
-            document.getElementById('names').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Sort functionality
-        sortSelect.addEventListener('change', () => {
-            currentSort = sortSelect.value;
-            renderNames();
-        });
-        
-        // Random name generator
-        randomNameBtn.addEventListener('click', showRandomName);
-        
-        // Load more names
-        loadMoreBtn.addEventListener('click', loadMoreNames);
-        
-        // NEW: Load More buttons for Quranic and Forbidden names
-        const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
-        const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
-
-        if (loadMoreQuranicBtn) {
-            loadMoreQuranicBtn.addEventListener('click', function() {
-                displayedQuranicNames += 12;
-                renderQuranicNames();
-            });
-        }
-
-        if (loadMoreForbiddenBtn) {
-            loadMoreForbiddenBtn.addEventListener('click', function() {
-                displayedForbiddenNames += 12;
-                renderForbiddenNames();
-            });
-        }
-        
-        // Contact form
-        contactForm.addEventListener('submit', handleContactForm);
-        
-        // Modal functionality
-        closeModal.addEventListener('click', closeNameModal);
-        modalFavorite.addEventListener('click', toggleFavoriteInModal);
-        modalCopy.addEventListener('click', copyName);
-        modalShare.addEventListener('click', shareName);
-        modalAudio.addEventListener('click', playPronunciation);
-        
-        // Close modal when clicking outside
-        nameModal.addEventListener('click', (e) => {
-            if (e.target === nameModal) {
-                closeNameModal();
             }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !nameModal.classList.contains('hidden')) {
-                closeNameModal();
+        }
+
+        // ===== THEME FUNCTIONALITY =====
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        function changeColorTheme() {
+            const theme = themeSelector.value;
+            document.documentElement.classList.remove('theme-emerald', 'theme-royal-blue', 'theme-desert-glow');
+            if (theme !== 'default') {
+                document.documentElement.classList.add(`theme-${theme}`);
             }
-        });
-    }
-
-    // ===== MOBILE MENU =====
-    function toggleMobileMenu() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-        
-        if (mobileMenu.classList.contains('hidden')) {
-            // Open menu
-            mobileMenu.classList.remove('hidden');
-            menuIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-        } else {
-            // Close menu
-            mobileMenu.classList.add('hidden');
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
+            localStorage.setItem('colorTheme', theme);
         }
-    }
 
-    // ===== THEME FUNCTIONALITY =====
-    function toggleTheme() {
-        document.documentElement.classList.toggle('dark');
-        const isDark = document.documentElement.classList.contains('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
+        // ===== FILTER & SORT FUNCTIONALITY =====
+        function fixFilterButtons() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
 
-    function changeColorTheme() {
-        const theme = themeSelector.value;
-        document.documentElement.classList.remove('theme-emerald', 'theme-royal-blue', 'theme-desert-glow');
-        if (theme !== 'default') {
-            document.documentElement.classList.add(`theme-${theme}`);
-        }
-        localStorage.setItem('colorTheme', theme);
-    }
+                    // Add active class to clicked button
+                    this.classList.add('active');
 
-    // ===== FILTER & SORT FUNCTIONALITY =====
-    function fixFilterButtons() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
+                    // Apply filter
+                    const filter = this.getAttribute('data-filter');
+                    currentFilter = filter;
+                    renderNames();
                 });
-
-                // Add active class to clicked button
-                this.classList.add('active');
-
-                // Apply filter
-                const filter = this.getAttribute('data-filter');
-                currentFilter = filter;
-                renderNames();
             });
-        });
-    }
-
-    function sortNames(names) {
-        switch (currentSort) {
-            case 'az': return names.sort((a, b) => a.english.localeCompare(b.english));
-            case 'za': return names.sort((a, b) => b.english.localeCompare(a.english));
-            case 'origin': return names.sort((a, b) => a.origin.localeCompare(b.origin));
-            case 'meaning': return names.sort((a, b) => a.meaning.localeCompare(b.meaning));
-            default: return names;
         }
-    }
 
-    // ===== SEARCH FUNCTIONALITY =====
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
+        function sortNames(names) {
+            switch (currentSort) {
+                case 'az': return names.sort((a, b) => a.english.localeCompare(b.english));
+                case 'za': return names.sort((a, b) => b.english.localeCompare(a.english));
+                case 'origin': return names.sort((a, b) => a.origin.localeCompare(b.origin));
+                case 'meaning': return names.sort((a, b) => a.meaning.localeCompare(b.meaning));
+                default: return names;
+            }
+        }
+
+        // ===== SEARCH FUNCTIONALITY =====
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
                 clearTimeout(timeout);
-                func(...args);
+                timeout = setTimeout(later, wait);
             };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    function handleSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        const suggestionsContainer = document.getElementById('suggestions');
-        
-        // Clear previous suggestions
-        suggestionsContainer.innerHTML = '';
-        suggestionsContainer.classList.add('hidden');
-        
-        if (searchTerm.length < 1) return;
-        
-        const matches = getSmartMatches(searchTerm);
-        
-        if (matches.length > 0) {
-            suggestionsContainer.classList.remove('hidden');
-            renderSuggestions(matches, searchTerm);
         }
-    }
 
-    function getSmartMatches(searchTerm) {
-        return namesDatabase.filter(name => {
-             // Forbidden names filter
-        if (name.status === 'forbidden') return false;
-            const searchLower = searchTerm.toLowerCase();
-            return (
-                name.english.toLowerCase().includes(searchLower) ||
-                name.meaning.toLowerCase().includes(searchLower) ||
-                name.origin.toLowerCase().includes(searchLower) ||
-                name.arabic.includes(searchTerm) ||
-                name.urdu.includes(searchTerm) ||
-                name.english.toLowerCase().startsWith(searchLower) ||
-                name.pronunciation.toLowerCase().includes(searchLower)
-            );
-        }).slice(0, 8);
-    }
+        function handleSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const suggestionsContainer = document.getElementById('suggestions');
+            
+            // Clear previous suggestions
+            suggestionsContainer.innerHTML = '';
+            suggestionsContainer.classList.add('hidden');
+            
+            if (searchTerm.length < 1) return;
+            
+            const matches = getSmartMatches(searchTerm);
+            
+            if (matches.length > 0) {
+                suggestionsContainer.classList.remove('hidden');
+                renderSuggestions(matches, searchTerm);
+            }
+        }
 
-    function renderSuggestions(matches, searchTerm) {
-        const suggestionsContainer = document.getElementById('suggestions');
-        
-        matches.forEach((name) => {
-            const li = document.createElement('li');
-            li.className = 'suggestion-item px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition-colors border-b border-gray-200 dark:border-gray-600 last:border-b-0';
-            li.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <div>
-                        <div class="font-semibold text-gray-900 dark:text-white">${highlightMatch(name.english, searchTerm)}</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                            <span class="arabic-text">${name.arabic}</span> • ${name.meaning}
+        function getSmartMatches(searchTerm) {
+            return namesDatabase.filter(name => {
+                // Forbidden names filter from search
+                if (name.status === 'forbidden') return false;
+                
+                const searchLower = searchTerm.toLowerCase();
+                return (
+                    name.english.toLowerCase().includes(searchLower) ||
+                    name.meaning.toLowerCase().includes(searchLower) ||
+                    name.origin.toLowerCase().includes(searchLower) ||
+                    name.arabic.includes(searchTerm) ||
+                    name.urdu.includes(searchTerm) ||
+                    name.english.toLowerCase().startsWith(searchLower) ||
+                    name.pronunciation.toLowerCase().includes(searchLower)
+                );
+            }).slice(0, 8);
+        }
+
+        function renderSuggestions(matches, searchTerm) {
+            const suggestionsContainer = document.getElementById('suggestions');
+            
+            matches.forEach((name) => {
+                const li = document.createElement('li');
+                li.className = 'suggestion-item px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition-colors border-b border-gray-200 dark:border-gray-600 last:border-b-0';
+                li.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-semibold text-gray-900 dark:text-white">${highlightMatch(name.english, searchTerm)}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                <span class="arabic-text">${name.arabic}</span> • ${name.meaning}
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded-full">${name.gender === 'boy' ? '👦' : '👧'}</span>
+                    </div>
+                `;
+                
+                li.addEventListener('click', () => {
+                    searchInput.value = name.english;
+                    suggestionsContainer.classList.add('hidden');
+                    openNameModal(name);
+                });
+                
+                suggestionsContainer.appendChild(li);
+            });
+        }
+
+        function highlightMatch(text, searchTerm) {
+            if (!searchTerm) return text;
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span class="text-accent font-bold">$1</span>');
+        }
+
+        // Search event listeners
+        searchInput.addEventListener('focus', handleSearch);
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    const matchedName = namesDatabase.find(name => 
+                        name.english.toLowerCase() === searchTerm.toLowerCase()
+                    );
+                    if (matchedName) {
+                        openNameModal(matchedName);
+                        document.getElementById('suggestions').classList.add('hidden');
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#search-input') && !e.target.closest('#suggestions')) {
+                document.getElementById('suggestions').classList.add('hidden');
+            }
+        });
+
+        // ===== RENDER FUNCTIONS =====
+        function renderNames(namesToRender = null) {
+            let names = namesToRender || namesDatabase;
+            
+            // Always filter forbidden names from main names section
+            names = names.filter(name => name.status !== 'forbidden');
+            
+            // Apply filter
+            if (currentFilter !== 'all') {
+                if (currentFilter === 'boy' || currentFilter === 'girl') {
+                    names = names.filter(name => name.gender === currentFilter && name.status === 'allowed');
+                } else if (currentFilter === 'quranic') {
+                    names = names.filter(name => name.quranic === true);
+                } else {
+                    names = names.filter(name => name.origin.toLowerCase() === currentFilter && name.status === 'allowed');
+                }
+            } else {
+                names = names.filter(name => name.status === 'allowed');
+            }
+            
+            // Apply sort
+            names = sortNames(names);
+            
+            // Limit displayed names
+            const namesToShow = names.slice(0, displayedNames);
+            
+            // Clear grid
+            namesGrid.innerHTML = '';
+            
+            // Render names
+            if (namesToShow.length === 0) {
+                namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
+                return;
+            }
+            
+            namesToShow.forEach(name => {
+                const nameCard = createNameCard(name);
+                namesGrid.appendChild(nameCard);
+            });
+            
+            // Show/hide load more button
+            loadMoreBtn.classList.toggle('hidden', names.length <= displayedNames);
+        }
+
+        function renderQuranicNames() {
+            const quranicNames = namesDatabase.filter(name => name.quranic === true);
+            const quranicNamesToShow = quranicNames.slice(0, displayedQuranicNames);
+            
+            quranicNamesGrid.innerHTML = '';
+            quranicNamesToShow.forEach(name => {
+                const nameCard = createNameCard(name, true);
+                quranicNamesGrid.appendChild(nameCard);
+            });
+
+            const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
+            if (loadMoreQuranicBtn) {
+                loadMoreQuranicBtn.classList.toggle('hidden', quranicNames.length <= displayedQuranicNames);
+            }
+        }
+
+        function renderForbiddenNames() {
+            const forbiddenNames = namesDatabase.filter(name => name.status === 'forbidden');
+            const forbiddenNamesToShow = forbiddenNames.slice(0, displayedForbiddenNames);
+            
+            forbiddenNamesGrid.innerHTML = '';
+            forbiddenNamesToShow.forEach(name => {
+                const nameCard = createNameCard(name, false, true);
+                forbiddenNamesGrid.appendChild(nameCard);
+            });
+
+            const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
+            if (loadMoreForbiddenBtn) {
+                loadMoreForbiddenBtn.classList.toggle('hidden', forbiddenNames.length <= displayedForbiddenNames);
+            }
+        }
+
+        function renderFavorites() {
+            favoritesGrid.innerHTML = '';
+            if (favorites.length === 0) {
+                emptyFavorites.classList.remove('hidden');
+                return;
+            }
+            emptyFavorites.classList.add('hidden');
+            favorites.forEach(favId => {
+                const name = namesDatabase.find(n => n.id === favId);
+                if (name) {
+                    const nameCard = createNameCard(name, false, false, true);
+                    favoritesGrid.appendChild(nameCard);
+                }
+            });
+        }
+
+        function createNameCard(name, isQuranic = false, isForbidden = false, isFavorite = false) {
+            const card = document.createElement('div');
+            card.className = `card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-in`;
+            
+            if (isQuranic) card.classList.add('quranic-card');
+            if (isForbidden) card.classList.add('forbidden-card');
+            
+            const genderIcon = name.gender === 'boy' ? '👦' : '👧';
+            const isFav = favorites.includes(name.id);
+            
+            // FORBIDDEN NAMES: No favorite button
+            const favoriteButtonHtml = isForbidden ? '' : `
+                <button class="favorite-btn p-1 rounded-full ${isFav ? 'text-accent' : 'text-gray-400 hover:text-accent'}" data-id="${name.id}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${isFav ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                </button>
+            `;
+            
+            card.innerHTML = `
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">${name.english}</h3>
+                        ${favoriteButtonHtml}
+                    </div>
+                    
+                    <div class="arabic text-2xl mb-2 text-right">${name.arabic}</div>
+                    
+                    <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <span>${name.urdu}</span>
+                        <span>${name.persian}</span>
+                    </div>
+                    
+                    <p class="text-sm italic mb-2">${name.pronunciation}</p>
+                    <p class="text-sm mb-4 line-clamp-2">${name.meaning}</p>
+                    
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">${name.origin}</span>
+                        <div class="flex items-center">
+                            <span class="mr-2">${genderIcon}</span>
+                            ${isForbidden ? '<span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Forbidden</span>' : ''}
+                            ${name.quranic ? '<span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Quranic</span>' : ''}
                         </div>
                     </div>
-                    <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded-full">${name.gender === 'boy' ? '👦' : '👧'}</span>
                 </div>
             `;
             
-            li.addEventListener('click', () => {
-                searchInput.value = name.english;
-                suggestionsContainer.classList.add('hidden');
+            // Add event listeners - NO FAVORITE BUTTON FOR FORBIDDEN NAMES
+            if (!isForbidden) {
+                const favoriteBtn = card.querySelector('.favorite-btn');
+                favoriteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFavorite(name.id);
+                });
+            }
+            
+            card.addEventListener('click', () => {
                 openNameModal(name);
             });
             
-            suggestionsContainer.appendChild(li);
-        });
-    }
+            return card;
+        }
 
-    function highlightMatch(text, searchTerm) {
-        if (!searchTerm) return text;
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        return text.replace(regex, '<span class="text-accent font-bold">$1</span>');
-    }
+        // ===== FAVORITES FUNCTIONALITY =====
+        function toggleFavorite(nameId) {
+            const index = favorites.indexOf(nameId);
+            
+            if (index === -1) {
+                favorites.push(nameId);
+                showFavoriteFeedback('added');
+            } else {
+                favorites.splice(index, 1);
+                showFavoriteFeedback('removed');
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateAllFavoriteButtons(nameId);
+            renderFavorites();
+            
+            if (currentNameInModal && currentNameInModal.id === nameId) {
+                updateModalFavoriteButton(nameId);
+            }
+        }
 
-    // Search event listeners
-    searchInput.addEventListener('focus', handleSearch);
-
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                const matchedName = namesDatabase.find(name => 
-                    name.english.toLowerCase() === searchTerm.toLowerCase()
-                );
-                if (matchedName) {
-                    openNameModal(matchedName);
-                    document.getElementById('suggestions').classList.add('hidden');
+        function updateAllFavoriteButtons(nameId) {
+            const isFav = favorites.includes(nameId);
+            const favoriteBtns = document.querySelectorAll(`.favorite-btn[data-id="${nameId}"]`);
+            
+            favoriteBtns.forEach(btn => {
+                const svg = btn.querySelector('svg');
+                if (isFav) {
+                    btn.classList.add('text-accent');
+                    svg.setAttribute('fill', 'currentColor');
+                } else {
+                    btn.classList.remove('text-accent');
+                    svg.setAttribute('fill', 'none');
                 }
-            }
+            });
         }
-    });
 
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('#search-input') && !e.target.closest('#suggestions')) {
-            document.getElementById('suggestions').classList.add('hidden');
-        }
-    });
-
-    // ===== RENDER FUNCTIONS =====
-    function renderNames(namesToRender = null) {
-        let names = namesToRender || namesDatabase;
-         //  Always filter forbidden names
-    names = names.filter(name => name.status !== 'forbidden');
-        
-        // Apply filter
-        if (currentFilter !== 'all') {
-            if (currentFilter === 'boy' || currentFilter === 'girl') {
-                names = names.filter(name => name.gender === currentFilter && name.status === 'allowed');
-            } else if (currentFilter === 'quranic') {
-                names = names.filter(name => name.quranic === true);
-            } else {
-                names = names.filter(name => name.origin.toLowerCase() === currentFilter && name.status === 'allowed');
-            }
-        } else {
-            names = names.filter(name => name.status === 'allowed');
-        }
-        
-        // Apply sort
-        names = sortNames(names);
-        
-        // Limit displayed names
-        const namesToShow = names.slice(0, displayedNames);
-        
-        // Clear grid
-        namesGrid.innerHTML = '';
-        
-        // Render names
-        if (namesToShow.length === 0) {
-            namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
-            return;
-        }
-        
-        namesToShow.forEach(name => {
-            const nameCard = createNameCard(name);
-            namesGrid.appendChild(nameCard);
-        });
-        
-        // Show/hide load more button
-        loadMoreBtn.classList.toggle('hidden', names.length <= displayedNames);
-    }
-
-    function renderQuranicNames() {
-    const quranicNames = namesDatabase.filter(name => name.quranic === true);
-    const quranicNamesToShow = quranicNames.slice(0, displayedQuranicNames);
-    
-    quranicNamesGrid.innerHTML = '';
-    quranicNamesToShow.forEach(name => {
-        const nameCard = createNameCard(name, true);
-        quranicNamesGrid.appendChild(nameCard);
-    });
-
-    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class used
-    const loadMoreQuranicBtn = document.getElementById('load-more-quranic');
-    if (loadMoreQuranicBtn) {
-        loadMoreQuranicBtn.classList.toggle('hidden', quranicNames.length <= displayedQuranicNames);
-    }
-}
-
-function renderForbiddenNames() {
-    const forbiddenNames = namesDatabase.filter(name => name.status === 'forbidden');
-    const forbiddenNamesToShow = forbiddenNames.slice(0, displayedForbiddenNames);
-    
-    forbiddenNamesGrid.innerHTML = '';
-    forbiddenNamesToShow.forEach(name => {
-        const nameCard = createNameCard(name, false, true);
-        forbiddenNamesGrid.appendChild(nameCard);
-    });
-
-    // YEH PROFESSIONAL TAREEQA - Tailwind 'hidden' class used
-    const loadMoreForbiddenBtn = document.getElementById('load-more-forbidden');
-    if (loadMoreForbiddenBtn) {
-        loadMoreForbiddenBtn.classList.toggle('hidden', forbiddenNames.length <= displayedForbiddenNames);
-    }
-}
-
-    function renderFavorites() {
-        favoritesGrid.innerHTML = '';
-        if (favorites.length === 0) {
-            emptyFavorites.classList.remove('hidden');
-            return;
-        }
-        emptyFavorites.classList.add('hidden');
-        favorites.forEach(favId => {
-            const name = namesDatabase.find(n => n.id === favId);
-            if (name) {
-                const nameCard = createNameCard(name, false, false, true);
-                favoritesGrid.appendChild(nameCard);
-            }
-        });
-    }
-
-    function createNameCard(name, isQuranic = false, isForbidden = false, isFavorite = false) {
-        const card = document.createElement('div');
-        card.className = `card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-in`;
-        
-        if (isQuranic) card.classList.add('quranic-card');
-        if (isForbidden) card.classList.add('forbidden-card');
-        
-        const genderIcon = name.gender === 'boy' ? '👦' : '👧';
-        const isFav = favorites.includes(name.id);
-        
-        card.innerHTML = `
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold">${name.english}</h3>
-                    <button class="favorite-btn p-1 rounded-full ${isFav ? 'text-accent' : 'text-gray-400 hover:text-accent'}" data-id="${name.id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${isFav ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                    </button>
-                </div>
-                
-                <div class="arabic text-2xl mb-2 text-right">${name.arabic}</div>
-                
-                <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    <span>${name.urdu}</span>
-                    <span>${name.persian}</span>
-                </div>
-                
-                <p class="text-sm italic mb-2">${name.pronunciation}</p>
-                <p class="text-sm mb-4 line-clamp-2">${name.meaning}</p>
-                
-                <div class="flex justify-between items-center">
-                    <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">${name.origin}</span>
-                    <div class="flex items-center">
-                        <span class="mr-2">${genderIcon}</span>
-                        ${isForbidden ? '<span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Forbidden</span>' : ''}
-                        ${name.quranic ? '<span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Quranic</span>' : ''}
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        // Add event listeners
-        const favoriteBtn = card.querySelector('.favorite-btn');
-        favoriteBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleFavorite(name.id);
-        });
-        
-        card.addEventListener('click', () => {
-            openNameModal(name);
-        });
-        
-        return card;
-    }
-
-    // ===== FAVORITES FUNCTIONALITY =====
-    function toggleFavorite(nameId) {
-        const index = favorites.indexOf(nameId);
-        
-        if (index === -1) {
-            favorites.push(nameId);
-            showFavoriteFeedback('added');
-        } else {
-            favorites.splice(index, 1);
-            showFavoriteFeedback('removed');
-        }
-        
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateAllFavoriteButtons(nameId);
-        renderFavorites();
-        
-        if (currentNameInModal && currentNameInModal.id === nameId) {
-            updateModalFavoriteButton(nameId);
-        }
-    }
-
-    function updateAllFavoriteButtons(nameId) {
-        const isFav = favorites.includes(nameId);
-        const favoriteBtns = document.querySelectorAll(`.favorite-btn[data-id="${nameId}"]`);
-        
-        favoriteBtns.forEach(btn => {
-            const svg = btn.querySelector('svg');
+        function updateModalFavoriteButton(nameId) {
+            const isFav = favorites.includes(nameId);
+            const favoriteText = modalFavorite.querySelector('span');
+            
             if (isFav) {
-                btn.classList.add('text-accent');
-                svg.setAttribute('fill', 'currentColor');
+                modalFavorite.classList.add('text-accent');
+                favoriteText.textContent = 'Remove from Favorites';
             } else {
-                btn.classList.remove('text-accent');
-                svg.setAttribute('fill', 'none');
+                modalFavorite.classList.remove('text-accent');
+                favoriteText.textContent = 'Add to Favorites';
             }
-        });
-    }
-
-    function updateModalFavoriteButton(nameId) {
-        const isFav = favorites.includes(nameId);
-        const favoriteText = modalFavorite.querySelector('span');
-        
-        if (isFav) {
-            modalFavorite.classList.add('text-accent');
-            favoriteText.innerHTML = 'Remove from Favorites';
-        } else {
-            modalFavorite.classList.remove('text-accent');
-            favoriteText.innerHTML = 'Add to Favorites';
         }
-    }
 
-    function toggleFavoriteInModal() {
-        if (currentNameInModal) {
-            toggleFavorite(currentNameInModal.id);
+        function toggleFavoriteInModal() {
+            if (currentNameInModal && currentNameInModal.status !== 'forbidden') {
+                toggleFavorite(currentNameInModal.id);
+            }
         }
-    }
 
-    function showFavoriteFeedback(action) {
-        const message = action === 'added' ? 'Added to favorites!' : 'Removed from favorites';
-        const bgColor = action === 'added' ? 'bg-green-500' : 'bg-red-500';
-        
-        // Remove existing feedback
-        const existingFeedback = document.querySelector('.favorite-feedback');
-        if (existingFeedback) existingFeedback.remove();
-        
-        // Create feedback
-        const feedback = document.createElement('div');
-        feedback.className = `favorite-feedback fixed top-4 right-4 px-4 py-3 rounded-lg ${bgColor} text-white shadow-lg z-50`;
-        feedback.innerHTML = `
-            <div class="flex items-center">
-                <span class="mr-2">${action === 'added' ? '❤️' : '💔'}</span>
-                <span class="text-sm font-medium">${message}</span>
-            </div>
-        `;
-        
-        document.body.appendChild(feedback);
-        
-        // Auto remove after 2 seconds
-        setTimeout(() => {
-            feedback.remove();
-        }, 2000);
-    }
-
-    // ===== MODAL FUNCTIONALITY =====
-    function openNameModal(name) {
-        currentNameInModal = name;
-        document.getElementById('modal-name').textContent = name.english;
-        document.getElementById('modal-arabic').textContent = name.arabic;
-        document.getElementById('modal-urdu').textContent = name.urdu;
-        document.getElementById('modal-persian').textContent = name.persian;
-        document.getElementById('modal-pronunciation').textContent = name.pronunciation;
-        document.getElementById('modal-meaning').textContent = name.meaning;
-        document.getElementById('modal-origin').textContent = name.origin;
-        document.getElementById('modal-gender').textContent = name.gender === 'boy' ? '👦 Boy' : '👧 Girl';
-        
-        const ayahContainer = document.getElementById('modal-ayah-container');
-        const ayahElement = document.getElementById('modal-ayah');
-        if (name.quranic && name.ayah) {
-            ayahContainer.classList.remove('hidden');
-            ayahElement.textContent = name.ayah;
-        } else {
-            ayahContainer.classList.add('hidden');
-        }
-        
-        updateModalFavoriteButton(name.id);
-        nameModal.classList.remove('hidden');
-    }
-
-    function closeNameModal() {
-        nameModal.classList.add('hidden');
-        currentNameInModal = null;
-    }
-
-    function copyName() {
-        if (currentNameInModal) {
-            const textToCopy = `${currentNameInModal.english} (${currentNameInModal.arabic}) - ${currentNameInModal.meaning}`;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalHTML = modalCopy.innerHTML;
-                modalCopy.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                `;
-                setTimeout(() => { modalCopy.innerHTML = originalHTML; }, 2000);
-            });
-        }
-    }
-
-    function shareName() {
-        if (currentNameInModal && navigator.share) {
-            navigator.share({
-                title: `Islamic Name: ${currentNameInModal.english}`,
-                text: `Check out this beautiful Islamic name: ${currentNameInModal.english} (${currentNameInModal.arabic}) - ${currentNameInModal.meaning}`,
-                url: window.location.href
-            });
-        } else {
-            copyName();
-        }
-    }
-//==== Pronunciation Model ====
-function playPronunciation() {
-    if (currentNameInModal && 'speechSynthesis' in window) {
-        // 🛑 Stop any ongoing speech to avoid overlap
-        speechSynthesis.cancel();
-
-        // 🎙️ Create new utterance
-        const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
-        utterance.lang = 'en-IN';    // Indian English (best balance)
-        utterance.rate = 0.88;       // slightly slower for natural flow
-        utterance.pitch = 1.05;      // soft, warm tone
-        utterance.volume = 1;        // full sound
-
-        // 🔊 Speak it out
-        speechSynthesis.speak(utterance);
-    }
-}
-    // ===== UTILITY FUNCTIONS =====
-    function showRandomName() {
-        const allowedNames = namesDatabase.filter(name => name.status === 'allowed');
-        const randomIndex = Math.floor(Math.random() * allowedNames.length);
-        const randomName = allowedNames[randomIndex];
-        openNameModal(randomName);
-    }
-
-    function loadMoreNames() {
-        displayedNames += 12;
-        renderNames();
-    }
-    // Professional Contact Form Handler
-function handleContactForm(e) {
-    e.preventDefault();
-    
-    const btn = e.target.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    
-    // Loading state
-    btn.innerHTML = `
-        <svg class="animate-spin w-5 h-5 mr-2" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
-            <path fill="currentColor" class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Sending Message...
-    `;
-    btn.disabled = true;
-
-    // Simulate API call
-    setTimeout(() => {
-        const success = Math.random() > 0.2;
-        
-        if (success) {
-            showPopup('Message Sent Successfully!', 'We will get back to you within 24 hours.', 'success');
-            e.target.reset();
-        } else {
-            showPopup('Message Failed!', 'Please try again or contact us directly.', 'error');
-        }
-        
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-    }, 1500);
-}
-
-// Beautiful Popup Modal
-function showPopup(title, message, type) {
-    const popup = document.createElement('div');
-    const isSuccess = type === 'success';
-    
-    popup.innerHTML = `
-        <div class="fixed inset-0 flex items-center justify-center z-50 px-4">
-            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-sm w-full mx-auto relative transform transition-all duration-300 scale-95 opacity-0 shadow-xl">
-                <div class="text-center mb-4">
-                    <div class="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center ${isSuccess ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}">
-                        ${isSuccess ? '✓' : '✕'}
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">${title}</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mt-2">${message}</p>
+        function showFavoriteFeedback(action) {
+            const message = action === 'added' ? 'Added to favorites!' : 'Removed from favorites';
+            const bgColor = action === 'added' ? 'bg-green-500' : 'bg-red-500';
+            
+            // Remove existing feedback
+            const existingFeedback = document.querySelector('.favorite-feedback');
+            if (existingFeedback) existingFeedback.remove();
+            
+            // Create feedback
+            const feedback = document.createElement('div');
+            feedback.className = `favorite-feedback fixed top-4 right-4 px-4 py-3 rounded-lg ${bgColor} text-white shadow-lg z-50`;
+            feedback.innerHTML = `
+                <div class="flex items-center">
+                    <span class="mr-2">${action === 'added' ? '❤️' : '💔'}</span>
+                    <span class="text-sm font-medium">${message}</span>
                 </div>
-                <button onclick="this.closest('.fixed').remove()" 
-                        class="w-full ${isSuccess ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'} text-white py-3 rounded-lg font-semibold transition-colors">
-                    Continue
-                </button>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(popup);
-    
-    // Animate in
-    setTimeout(() => {
-        const modal = popup.querySelector('.rounded-xl');
-        modal.classList.remove('scale-95', 'opacity-0');
-        modal.classList.add('scale-100', 'opacity-100');
-    }, 10);
-}
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            // Auto remove after 2 seconds
+            setTimeout(() => {
+                feedback.remove();
+            }, 2000);
+        }
 
-    // ===== INITIALIZE APPLICATION =====
-    document.addEventListener('DOMContentLoaded', init);
-</script>
-</body>
-</html>
+        // ===== MODAL FUNCTIONALITY =====
+        function openNameModal(name) {
+            currentNameInModal = name;
+            document.getElementById('modal-name').textContent = name.english;
+            document.getElementById('modal-arabic').textContent = name.arabic;
+            document.getElementById('modal-urdu').textContent = name.urdu;
+            document.getElementById('modal-persian').textContent = name.persian;
+            document.getElementById('modal-pronunciation').textContent = name.pronunciation;
+            document.getElementById('modal-meaning').textContent = name.meaning;
+            document.getElementById('modal-origin').textContent = name.origin;
+            document.getElementById('modal-gender').textContent = name.gender === 'boy' ? '👦 Boy' : '👧 Girl';
+            
+            const ayahContainer = document.getElementById('modal-ayah-container');
+            const ayahElement = document.getElementById('modal-ayah');
+            if (name.quranic && name.ayah) {
+                ayahContainer.classList.remove('hidden');
+                ayahElement.textContent = name.ayah;
+            } else {
+                ayahContainer.classList.add('hidden');
+            }
+            
+            // FORBIDDEN NAMES: Hide favorite button in modal
+            if (name.status === 'forbidden') {
+                modalFavorite.style.display = 'none';
+            } else {
+                modalFavorite.style.display = 'flex';
+                updateModalFavoriteButton(name.id);
+            }
+            
+            nameModal.classList.remove('hidden');
+        }
+
+        function closeNameModal() {
+            nameModal.classList.add('hidden');
+            currentNameInModal = null;
+        }
+
+        function copyName() {
+            if (currentNameInModal) {
+                const textToCopy = `${currentNameInModal.english} (${currentNameInModal.arabic}) - ${currentNameInModal.meaning}`;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalHTML = modalCopy.innerHTML;
+                    modalCopy.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    `;
+                    setTimeout(() => { modalCopy.innerHTML = originalHTML; }, 2000);
+                });
+            }
+        }
+
+        function shareName() {
+            if (currentNameInModal && navigator.share) {
+                navigator.share({
+                    title: `Islamic Name: ${currentNameInModal.english}`,
+                    text: `Check out this beautiful Islamic name: ${currentNameInModal.english} (${currentNameInModal.arabic}) - ${currentNameInModal.meaning}`,
+                    url: window.location.href
+                });
+            } else {
+                copyName();
+            }
+        }
+
+        function playPronunciation() {
+            if (currentNameInModal && 'speechSynthesis' in window) {
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(currentNameInModal.english);
+                utterance.lang = 'en-IN';
+                utterance.rate = 0.88;
+                utterance.pitch = 1.05;
+                utterance.volume = 1;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        function showRandomName() {
+            const allowedNames = namesDatabase.filter(name => name.status === 'allowed');
+            const randomIndex = Math.floor(Math.random() * allowedNames.length);
+            const randomName = allowedNames[randomIndex];
+            openNameModal(randomName);
+        }
+
+        function loadMoreNames() {
+            displayedNames += 12;
+            renderNames();
+        }
+
+        // Professional Contact Form Handler
+        function handleContactForm(e) {
+            e.preventDefault();
+            
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            // Loading state
+            btn.innerHTML = `
+                <svg class="animate-spin w-5 h-5 mr-2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
+                    <path fill="currentColor" class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending Message...
+            `;
+            btn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                const success = Math.random() > 0.2;
+                
+                if (success) {
+                    showPopup('Message Sent Successfully!', 'We will get back to you within 24 hours.', 'success');
+                    e.target.reset();
+                } else {
+                    showPopup('Message Failed!', 'Please try again or contact us directly.', 'error');
+                }
+                
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // Beautiful Popup Modal
+        function showPopup(title, message, type) {
+            const popup = document.createElement('div');
+            const isSuccess = type === 'success';
+            
+            popup.innerHTML = `
+                <div class="fixed inset-0 flex items-center justify-center z-50 px-4">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-sm w-full mx-auto relative transform transition-all duration-300 scale-95 opacity-0 shadow-xl">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center ${isSuccess ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}">
+                                ${isSuccess ? '✓' : '✕'}
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">${title}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mt-2">${message}</p>
+                        </div>
+                        <button onclick="this.closest('.fixed').remove()" 
+                                class="w-full ${isSuccess ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'} text-white py-3 rounded-lg font-semibold transition-colors">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(popup);
+            
+            // Animate in
+            setTimeout(() => {
+                const modal = popup.querySelector('.rounded-xl');
+                modal.classList.remove('scale-95', 'opacity-0');
+                modal.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        // ===== INITIALIZE APPLICATION =====
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
