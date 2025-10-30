@@ -1248,10 +1248,6 @@
             ...quranicNames, 
             ...forbiddenNames
         ];
-        //  AUTOMATIC FIX IDs
-       namesDatabase.forEach((name, i) => name.id = i + 1);
-localStorage.removeItem('favorites');
-favorites = [];
 
         console.log("📊 Names Loaded:");
         console.log("Normal Names:", normalNames.length);
