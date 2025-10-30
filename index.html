@@ -1249,9 +1249,7 @@
             ...forbiddenNames
         ];
         //  AUTOMATIC FIX IDs
-        for (let i = 0; i < namesDatabase.length; i++) {
-    namesDatabase[i].id = i + 1;
-}
+       namesDatabase.forEach((name, i) => name.id = i + 1);
 localStorage.removeItem('favorites');
 favorites = [];
 
@@ -1751,6 +1749,8 @@ favorites = [];
             card.addEventListener('click', () => {
                 openNameModal(name);
             });
+
+
             
             return card;
         }
