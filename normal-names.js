@@ -14239,9 +14239,9 @@ const normalNames = [
 {
     "id": 1191,
     "english": "Rafay",
-    "arabic": "رَفَاي",
-    "urdu": "رفای",
-    "persian": "رفای",
+    "arabic": "رَافِع",
+    "urdu": "رافع",
+    "persian": "رافع",
     "meaning": "The exaulter, to elevate rank",
     "origin": "Arabic",
     "pronunciation": "Ra-fay",
