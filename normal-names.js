@@ -13703,5 +13703,45 @@ const normalNames = [
     "status": "allowed",
     "quranic": false
 },
+{
+    "id": 1150,
+    "english": "Parsa",
+    "arabic": "پَارْسَا",
+    "urdu": "پارسا",
+    "persian": "پارسا",
+    "meaning": "Devout or abstemious person, pious",
+    "origin": "Persian",
+    "pronunciation": "Par-sa",
+    "gender": "boy",
+    "status": "allowed",
+    "quranic": false
+},
+{
+    "id": 1151,
+    "english": "Parvez",
+    "arabic": "پَرْوِيز",
+    "urdu": "پرویز",
+    "persian": "پرویز",
+    "meaning": "Success, victorious, name of a Persian King",
+    "origin": "Persian",
+    "pronunciation": "Par-vez",
+    "gender": "boy",
+    "status": "allowed",
+    "quranic": false
+},
+{
+    "id": 1152,
+    "english": "Pervaiz",
+    "arabic": "پَرْوֵز",
+    "urdu": "پرویز",
+    "persian": "پرویز",
+    "meaning": "Breeze, gentle wind",
+    "origin": "Persian",
+    "pronunciation": "Per-vaiz",
+    "gender": "boy",
+    "status": "allowed",
+    "quranic": false
+},
+
     // ... continue with remaining names
 ];
