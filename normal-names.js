@@ -18138,13 +18138,13 @@ const normalNames = [
 },
 {
     id: 1491,
-    english: "Tasneen",
+    english: "Tasneem",
     arabic: "تَسْنِيم",
     urdu: "تسنیم",
     persian: "تسنیم",
     meaning: "A heavenly fountain",
     origin: "Arabic",
-    pronunciation: "Tas-neen",
+    pronunciation: "Tas-neem",
     gender: "boy",
     status: "allowed",
     quranic: false
