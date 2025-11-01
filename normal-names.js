@@ -1085,7 +1085,7 @@ const normalNames = [
     urdu: "مہروش",
     persian: "مهروش",
     meaning: "Radiant like the moon; one who shines with lunar beauty and light",
-    origin: "Urdu (with Persian roots)",
+    origin: "Urdu",
     pronunciation: "Mah-roosh",
     gender: "girl",
     status: "allowed",
