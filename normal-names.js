@@ -20008,5 +20008,18 @@ const normalNames = [
     status: "allowed",
     quranic: false
 },
+{
+    "id": 1635,
+    "english": "Mustafa",
+    "arabic": "مُصْطَفَى",
+    "urdu": "مصطفی",
+    "persian": "مصطفی",
+    "meaning": "Chosen one",
+    "origin": "Arabic",
+    "pronunciation": "Mos-ta-fa",
+    "gender": "boy",
+    "status": "allowed",
+    "quranic": false
+},
     // ... continue with remaining names
 ];
