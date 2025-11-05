@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - NūrNames | Muslim & Quranic Baby Names</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Manrope:wght@300;400;500;600&family=Amiri:wght@400;700&family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+    /* ===== ROOT VARIABLES & THEMES ===== */
+    :root {
+        --primary: #0095fd;
+        --accent: #d4af37;
+        --background: #f8f6f2;
+        --secondary: #1e3a5f;
+        --dark-mode: #0a0f14;
+        --glow: rgba(212,175,55,0.4);
+    }
+    
+    .dark {
+        --primary: #1e3a5f;
+        --accent: #d4af37;
+        --background: #0a0f14;
+        --secondary: #0f4c5c;
+    }
+    
+    .theme-emerald {
+        --primary: #047857;
+        --accent: #10b981;
+        --secondary: #065f46;
+        --glow: rgba(16, 185, 129, 0.45);
+    }
+    
+    .theme-royal-blue {
+        --primary: #1e40af;
+        --accent: #3b82f6;
+        --secondary: #1e3a8a;
+        --glow: rgba(59, 130, 246, 0.45);
+    }
+    
+    .theme-desert-glow {
+        --primary: #92400e;
+        --accent: #f59e0b;
+        --secondary: #78350f;
+        --glow: rgba(245, 158, 11, 0.45);
+    }
+
+    /* ===== BASE STYLES ===== */
+    body {
+        font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--background);
+        color: #111827;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        max-width: 100vw;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        line-height: 1.7;
+        font-weight: 450;
+    }
+    
+    .dark body {
+        color: #f9fafb;
+        font-weight: 400;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Cinzel Decorative', serif;
+        color: var(--accent);
+    }
+    
+    .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+        color: var(--accent);
+    }
+
+    /* Glassmorphism */
+    .glassmorphism {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glassmorphism {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Accent Glow System */
+    .accent-glow {
+        color: var(--accent);
+        border-color: var(--accent);
+        transition: all 0.3s ease;
+    }
+    
+    .accent-glow:hover,
+    .accent-glow:focus {
+        box-shadow: 0 0 8px var(--accent);
+        text-shadow: 0 0 6px var(--accent);
+    }
+
+    /* Buttons */
+    .accent-button {
+        background: var(--accent);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+    }
+    
+    .accent-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Footer */
+    .footer-section {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--accent);
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .developer-name {
+        font-family: 'Cinzel Decorative', cursive;
+        color: var(--accent);
+        letter-spacing: 1px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .developer-name:hover {
+        text-shadow: 0 0 10px var(--accent);
+    }
+    
+    .footer-section h2 {
+        color: var(--accent);
+        font-family: 'Cinzel Decorative', serif;
+        letter-spacing: 1px;
+        text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    
+    .footer-section p {
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+    
+    .footer-link {
+        color: var(--accent);
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover {
+        color: #fff;
+    }
+    
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    /* Light Theme Footer Adjustments */
+    .light .footer-section {
+        background: linear-gradient(135deg, #faf3e0, #f0e0b2);
+        color: #4a3b0f;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .light .footer-section p,
+    .light .footer-section .footer-link {
+        color: #4a3b0f;
+    }
+    
+    .light .developer-name {
+        color: #b38728;
+    }
+    
+    .light .footer-section h2 {
+        color: #b38728;
+        text-shadow: 0 0 6px rgba(179, 135, 40, 0.4);
+    }
+
+    /* Terms Content Styling */
+    .terms-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .terms-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border-left: 4px solid var(--accent);
+    }
+    
+    .dark .terms-section {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    
+    .terms-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .terms-list li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .terms-list li:before {
+        content: "•";
+        color: var(--accent);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    /* Important Notice Box */
+    .important-notice {
+        background: linear-gradient(135deg, var(--accent), #b38728);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Last Updated Badge */
+    .last-updated {
+        background: var(--accent);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        display: inline-block;
+        margin-bottom: 2rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .terms-content {
+            padding: 1rem;
+        }
+        
+        .terms-section {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .important-notice {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700, #FFA500);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      animation: gradientAnimation 3s linear infinite;
+    }
+
+    /* Animation */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animate-gradient {
+      animation: gradientAnimation 3s linear infinite;
+    }
+
+    /* Table of Contents */
+    .toc {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .dark .toc {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .toc-list {
+        columns: 2;
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .toc-list li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .toc-list a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .toc-list a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .toc-list {
+            columns: 1;
+        }
+    }
+    </style>
+</head>
+<body class="bg-background text-primary">
+    <!-- Navigation -->
+    <nav class="glassmorphism sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-baseline gap-1 sm:gap-2 flex-shrink-0 min-w-0">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text animate-gradient truncate min-w-0">
+                    N<span style="text-decoration: overline; font-size: 0.95em; display: inline-block; padding-top: 1px">ū</span>r<span class="text-accent">Names</span>
+                </h1>
+                <span class="text-[8px] sm:text-[9px] border border-current text-current px-1 py-0.5 rounded-full font-mono font-bold tracking-wide uppercase self-start mt-0.5 bg-transparent flex-shrink-0">BETA</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+                <a href="index.html#names" class="hover:text-accent transition-colors">Names</a>
+                <a href="index.html#quranic" class="hover:text-accent transition-colors">Quranic Names</a>
+                <a href="index.html#forbidden" class="hover:text-accent transition-colors">Forbidden Names</a>
+                <a href="index.html#favorites" class="hover:text-accent transition-colors">Favorites</a>
+                <a href="index.html#about" class="hover:text-accent transition-colors">About</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                
+                <div class="relative">
+                    <select id="theme-selector" 
+                        class="accent-button appearance-none cursor-pointer w-full rounded-lg py-2.5 px-4 text-sm font-medium border-0 focus:outline-none focus:ring-0">
+                        <option value="default" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Default</option>
+                        <option value="emerald" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Emerald</option>
+                        <option value="royal-blue" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Royal Blue</option>
+                        <option value="desert-glow" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Desert Glow</option>
+                    </select>
+                    
+                    <!-- Custom dropdown arrow -->
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms of Service Header -->
+    <section class="py-16 bg-gradient-to-br from-primary/10 to-secondary/10">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Terms of Service</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Please read these terms carefully before using our services
+            </p>
+            <div class="last-updated mt-4">Last Updated: January 2025</div>
+        </div>
+    </section>
+
+    <!-- Terms of Service Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="terms-content">
+                
+                <!-- Important Notice -->
+                <div class="important-notice">
+                    <h2 class="text-2xl font-bold mb-4">📜 Important Notice</h2>
+                    <p class="text-lg">
+                        By accessing and using NūrNames, you accept and agree to be bound by the terms and provisions of this agreement.
+                    </p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="toc">
+                    <h3 class="text-xl font-bold mb-4">Table of Contents</h3>
+                    <ul class="toc-list">
+                        <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+                        <li><a href="#services">2. Services Description</a></li>
+                        <li><a href="#user-responsibilities">3. User Responsibilities</a></li>
+                        <li><a href="#intellectual-property">4. Intellectual Property</a></li>
+                        <li><a href="#prohibited-activities">5. Prohibited Activities</a></li>
+                        <li><a href="#disclaimer">6. Disclaimer</a></li>
+                        <li><a href="#limitation-liability">7. Limitation of Liability</a></li>
+                        <li><a href="#termination">8. Termination</a></li>
+                        <li><a href="#governing-law">9. Governing Law</a></li>
+                        <li><a href="#changes">10. Changes to Terms</a></li>
+                        <li><a href="#contact">11. Contact Information</a></li>
+                    </ul>
+                </div>
+
+                <!-- Acceptance of Terms -->
+                <div class="terms-section" id="acceptance">
+                    <h2 class="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
+                    <p class="mb-4">
+                        By accessing and using NūrNames ("the Website"), you accept and agree to be bound by the terms and provision of this agreement. Additionally, when using this website's particular services, you shall be subject to any posted guidelines or rules applicable to such services.
+                    </p>
+                    <p>
+                        If you do not agree to these terms, please do not use our website. We reserve the right to update or modify these terms at any time without prior notice.
+                    </p>
+                </div>
+
+                <!-- Services Description -->
+                <div class="terms-section" id="services">
+                    <h2 class="text-2xl font-bold mb-4">2. Services Description</h2>
+                    <p class="mb-4">
+                        NūrNames provides a comprehensive database of Islamic and Quranic baby names with the following features:
+                    </p>
+                    <ul class="terms-list mb-4">
+                        <li>Browse and search Islamic names with meanings and pronunciations</li>
+                        <li>Quranic names with references</li>
+                        <li>Forbidden names in Islam with explanations</li>
+                        <li>Favorite names saving functionality</li>
+                        <li>Multiple language support (Arabic, Urdu, Persian, English)</li>
+                        <li>Theme customization options</li>
+                    </ul>
+                    <p>
+                        Our services are provided free of charge for personal, non-commercial use. We reserve the right to modify or discontinue any service at any time.
+                    </p>
+                </div>
+
+                <!-- User Responsibilities -->
+                <div class="terms-section" id="user-responsibilities">
+                    <h2 class="text-2xl font-bold mb-4">3. User Responsibilities</h2>
+                    <p class="mb-4">As a user of NūrNames, you agree to:</p>
+                    <ul class="terms-list mb-4">
+                        <li>Use the website for lawful purposes only</li>
+                        <li>Provide accurate information when contacting us</li>
+                        <li>Respect Islamic values and principles</li>
+                        <li>Not attempt to disrupt or interfere with the website's functionality</li>
+                        <li>Not use automated systems to access the website</li>
+                        <li>Comply with all applicable laws and regulations</li>
+                    </ul>
+                    <p>
+                        You are responsible for maintaining the confidentiality of any personal information and for all activities that occur under your account.
+                    </p>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div class="terms-section" id="intellectual-property">
+                    <h2 class="text-2xl font-bold mb-4">4. Intellectual Property</h2>
+                    <p class="mb-4">
+                        All content on NūrNames, including but not limited to text, graphics, logos, images, and software, is the property of NūrNames or its content suppliers and is protected by international copyright laws.
+                    </p>
+                    <p class="mb-4">
+                        You may not:
+                    </p>
+                    <ul class="terms-list mb-4">
+                        <li>Copy, reproduce, or distribute content without permission</li>
+                        <li>Modify or create derivative works</li>
+                        <li>Use content for commercial purposes</li>
+                        <li>Remove any copyright or proprietary notices</li>
+                    </ul>
+                    <p>
+                        The name "NūrNames" and our logo are trademarks of our service. All other trademarks are the property of their respective owners.
+                    </p>
+                </div>
+
+                <!-- Prohibited Activities -->
+                <div class="terms-section" id="prohibited-activities">
+                    <h2 class="text-2xl font-bold mb-4">5. Prohibited Activities</h2>
+                    <p class="mb-4">You are specifically prohibited from:</p>
+                    <ul class="terms-list mb-4">
+                        <li>Using the website in any way that violates Islamic principles</li>
+                        <li>Engaging in data mining, scraping, or similar activities</li>
+                        <li>Attempting to gain unauthorized access to our systems</li>
+                        <li>Uploading or transmitting viruses or malicious code</li>
+                        <li>Impersonating another person or entity</li>
+                        <li>Engaging in any activity that could damage or overburden our infrastructure</li>
+                        <li>Using the website for any illegal or unauthorized purpose</li>
+                    </ul>
+                    <p>
+                        Violation of these prohibitions may result in termination of your access and legal action.
+                    </p>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="terms-section" id="disclaimer">
+                    <h2 class="text-2xl font-bold mb-4">6. Disclaimer</h2>
+                    <p class="mb-4">
+                        NūrNames provides name information for educational and reference purposes only. While we strive to ensure the accuracy of information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Religious Disclaimer:</strong> The information provided about Islamic names, including Quranic references and forbidden names, is based on scholarly research and traditional understanding. However, we recommend consulting with qualified Islamic scholars for religious guidance regarding name selection.
+                    </p>
+                    <p>
+                        Your use of any information on this website is entirely at your own risk. We shall not be liable for any loss or damage arising from your reliance on information provided on this website.
+                    </p>
+                </div>
+
+                <!-- Limitation of Liability -->
+                <div class="terms-section" id="limitation-liability">
+                    <h2 class="text-2xl font-bold mb-4">7. Limitation of Liability</h2>
+                    <p class="mb-4">
+                        To the fullest extent permitted by applicable law, NūrNames shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+                    </p>
+                    <ul class="terms-list mb-4">
+                        <li>Your access to or use of or inability to access or use the service</li>
+                        <li>Any conduct or content of any third party on the service</li>
+                        <li>Any content obtained from the service</li>
+                        <li>Unauthorized access, use, or alteration of your transmissions or content</li>
+                    </ul>
+                    <p>
+                        In no event shall our total liability to you for all damages exceed the amount of fifty dollars ($50.00 USD).
+                    </p>
+                </div>
+
+                <!-- Termination -->
+                <div class="terms-section" id="termination">
+                    <h2 class="text-2xl font-bold mb-4">8. Termination</h2>
+                    <p class="mb-4">
+                        We may terminate or suspend your access to our service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
+                    </p>
+                    <p class="mb-4">
+                        Upon termination, your right to use the service will cease immediately. If you wish to terminate your account, you may simply discontinue using the service.
+                    </p>
+                    <p>
+                        All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.
+                    </p>
+                </div>
+
+                <!-- Governing Law -->
+                <div class="terms-section" id="governing-law">
+                    <h2 class="text-2xl font-bold mb-4">9. Governing Law</h2>
+                    <p class="mb-4">
+                        These Terms shall be governed and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.
+                    </p>
+                    <p>
+                        Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.
+                    </p>
+                </div>
+
+                <!-- Changes to Terms -->
+                <div class="terms-section" id="changes">
+                    <h2 class="text-2xl font-bold mb-4">10. Changes to Terms</h2>
+                    <p class="mb-4">
+                        We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect.
+                    </p>
+                    <p>
+                        What constitutes a material change will be determined at our sole discretion. By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms.
+                    </p>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="terms-section" id="contact">
+                    <h2 class="text-2xl font-bold mb-4">11. Contact Information</h2>
+                    <p class="mb-4">
+                        If you have any questions about these Terms of Service, please contact us:
+                    </p>
+                    <ul class="terms-list mb-4">
+                        <li><strong>Email:</strong> legal@nurnames.com</li>
+                        <li><strong>Contact Form:</strong> Through our website's contact form</li>
+                        <li><strong>Address:</strong> [Your Business Address]</li>
+                    </ul>
+                    <p>
+                        We will respond to your inquiry within a reasonable timeframe.
+                    </p>
+                </div>
+
+                <!-- Agreement Section -->
+                <div class="terms-section bg-accent/10 border-accent">
+                    <h2 class="text-2xl font-bold mb-4">Your Agreement</h2>
+                    <p class="mb-4">
+                        By using our website, you hereby acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+                    </p>
+                    <p>
+                        If you do not agree to these terms, please discontinue use of NūrNames immediately.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section text-white py-12 transition-all duration-500">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold mb-2">Nūr<span class="text-accent">Names</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-200">Every child is a blessing — الحمد لله</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-gray-300">
+                    <p>
+                        Developed by 
+                        <a href="https://www.aliahtisham.pro/" target="_blank" class="developer-name">Ali Ahtisham</a> 
+                        | Designed with Faith and Elegance
+                    </p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+                    <a href="index.html#about" class="footer-link">Contact</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-8 pt-8 border-t border-gray-600">
+                <p class="text-sm text-gray-400">© 2025 NūrNames. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeSelector = document.getElementById('theme-selector');
+
+        // Apply saved theme
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+
+            if (savedColorTheme !== 'default') {
+                document.documentElement.classList.add(`theme-${savedColorTheme}`);
+                themeSelector.value = savedColorTheme;
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Change color theme
+        function changeColorTheme() {
+            const theme = themeSelector.value;
+            document.documentElement.classList.remove('theme-emerald', 'theme-royal-blue', 'theme-desert-glow');
+            if (theme !== 'default') {
+                document.documentElement.classList.add(`theme-${theme}`);
+            }
+            localStorage.setItem('colorTheme', theme);
+        }
+
+        // Smooth scroll for table of contents
+        document.querySelectorAll('.toc-list a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            applySavedTheme();
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            themeSelector.addEventListener('change', changeColorTheme);
+        });
+    </script>
+</body>
+</html>
