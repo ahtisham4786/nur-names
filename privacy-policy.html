@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - NūrNames | Muslim & Quranic Baby Names</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Manrope:wght@300;400;500;600&family=Amiri:wght@400;700&family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+    /* ===== ROOT VARIABLES & THEMES ===== */
+    :root {
+        --primary: #0095fd;
+        --accent: #d4af37;
+        --background: #f8f6f2;
+        --secondary: #1e3a5f;
+        --dark-mode: #0a0f14;
+        --glow: rgba(212,175,55,0.4);
+    }
+    
+    .dark {
+        --primary: #1e3a5f;
+        --accent: #d4af37;
+        --background: #0a0f14;
+        --secondary: #0f4c5c;
+    }
+    
+    .theme-emerald {
+        --primary: #047857;
+        --accent: #10b981;
+        --secondary: #065f46;
+        --glow: rgba(16, 185, 129, 0.45);
+    }
+    
+    .theme-royal-blue {
+        --primary: #1e40af;
+        --accent: #3b82f6;
+        --secondary: #1e3a8a;
+        --glow: rgba(59, 130, 246, 0.45);
+    }
+    
+    .theme-desert-glow {
+        --primary: #92400e;
+        --accent: #f59e0b;
+        --secondary: #78350f;
+        --glow: rgba(245, 158, 11, 0.45);
+    }
+
+    /* ===== BASE STYLES ===== */
+    body {
+        font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--background);
+        color: #111827;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        max-width: 100vw;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        line-height: 1.7;
+        font-weight: 450;
+    }
+    
+    .dark body {
+        color: #f9fafb;
+        font-weight: 400;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Cinzel Decorative', serif;
+        color: var(--accent);
+    }
+    
+    .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+        color: var(--accent);
+    }
+
+    /* Glassmorphism */
+    .glassmorphism {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glassmorphism {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Accent Glow System */
+    .accent-glow {
+        color: var(--accent);
+        border-color: var(--accent);
+        transition: all 0.3s ease;
+    }
+    
+    .accent-glow:hover,
+    .accent-glow:focus {
+        box-shadow: 0 0 8px var(--accent);
+        text-shadow: 0 0 6px var(--accent);
+    }
+
+    /* Buttons */
+    .accent-button {
+        background: var(--accent);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+    }
+    
+    .accent-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Footer */
+    .footer-section {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--accent);
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .developer-name {
+        font-family: 'Cinzel Decorative', cursive;
+        color: var(--accent);
+        letter-spacing: 1px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .developer-name:hover {
+        text-shadow: 0 0 10px var(--accent);
+    }
+    
+    .footer-section h2 {
+        color: var(--accent);
+        font-family: 'Cinzel Decorative', serif;
+        letter-spacing: 1px;
+        text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    
+    .footer-section p {
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+    
+    .footer-link {
+        color: var(--accent);
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover {
+        color: #fff;
+    }
+    
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    /* Light Theme Footer Adjustments */
+    .light .footer-section {
+        background: linear-gradient(135deg, #faf3e0, #f0e0b2);
+        color: #4a3b0f;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .light .footer-section p,
+    .light .footer-section .footer-link {
+        color: #4a3b0f;
+    }
+    
+    .light .developer-name {
+        color: #b38728;
+    }
+    
+    .light .footer-section h2 {
+        color: #b38728;
+        text-shadow: 0 0 6px rgba(179, 135, 40, 0.4);
+    }
+
+    /* Policy Content Styling */
+    .policy-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .policy-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border-left: 4px solid var(--accent);
+    }
+    
+    .dark .policy-section {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    
+    .policy-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .policy-list li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .policy-list li:before {
+        content: "•";
+        color: var(--accent);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    /* Last Updated Badge */
+    .last-updated {
+        background: var(--accent);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        display: inline-block;
+        margin-bottom: 2rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .policy-content {
+            padding: 1rem;
+        }
+        
+        .policy-section {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700, #FFA500);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      animation: gradientAnimation 3s linear infinite;
+    }
+
+    /* Animation */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animate-gradient {
+      animation: gradientAnimation 3s linear infinite;
+    }
+    </style>
+</head>
+<body class="bg-background text-primary">
+    <!-- Navigation -->
+    <nav class="glassmorphism sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-baseline gap-1 sm:gap-2 flex-shrink-0 min-w-0">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text animate-gradient truncate min-w-0">
+                    N<span style="text-decoration: overline; font-size: 0.95em; display: inline-block; padding-top: 1px">ū</span>r<span class="text-accent">Names</span>
+                </h1>
+                <span class="text-[8px] sm:text-[9px] border border-current text-current px-1 py-0.5 rounded-full font-mono font-bold tracking-wide uppercase self-start mt-0.5 bg-transparent flex-shrink-0">BETA</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+                <a href="index.html#names" class="hover:text-accent transition-colors">Names</a>
+                <a href="index.html#quranic" class="hover:text-accent transition-colors">Quranic Names</a>
+                <a href="index.html#forbidden" class="hover:text-accent transition-colors">Forbidden Names</a>
+                <a href="index.html#favorites" class="hover:text-accent transition-colors">Favorites</a>
+                <a href="index.html#about" class="hover:text-accent transition-colors">About</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                
+                <div class="relative">
+                    <select id="theme-selector" 
+                        class="accent-button appearance-none cursor-pointer w-full rounded-lg py-2.5 px-4 text-sm font-medium border-0 focus:outline-none focus:ring-0">
+                        <option value="default" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Default</option>
+                        <option value="emerald" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Emerald</option>
+                        <option value="royal-blue" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Royal Blue</option>
+                        <option value="desert-glow" class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">Desert Glow</option>
+                    </select>
+                    
+                    <!-- Custom dropdown arrow -->
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Header -->
+    <section class="py-16 bg-gradient-to-br from-primary/10 to-secondary/10">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Privacy Policy</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Your privacy is important to us. This policy explains how we collect, use, and protect your information.
+            </p>
+            <div class="last-updated mt-4">Last Updated: January 2025</div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="policy-content">
+                <!-- Introduction -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">1. Introduction</h2>
+                    <p class="mb-4">
+                        Welcome to NūrNames ("we," "our," or "us"). We are committed to protecting your privacy and ensuring transparency about how we handle your information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.
+                    </p>
+                    <p>
+                        By accessing or using NūrNames, you agree to the terms of this Privacy Policy. If you do not agree with the terms, please do not access the website.
+                    </p>
+                </div>
+
+                <!-- Information We Collect -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">2. Information We Collect</h2>
+                    <h3 class="text-xl font-semibold mb-3">Personal Information</h3>
+                    <p class="mb-4">We may collect the following types of information:</p>
+                    <ul class="policy-list mb-6">
+                        <li><strong>Contact Information:</strong> Name, email address when you contact us through our contact form</li>
+                        <li><strong>Technical Information:</strong> IP address, browser type, device information, and usage data</li>
+                        <li><strong>Preferences:</strong> Your favorite names and theme preferences stored locally in your browser</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mb-3">Non-Personal Information</h3>
+                    <p>We automatically collect certain information when you visit our website:</p>
+                    <ul class="policy-list">
+                        <li>Browser type and version</li>
+                        <li>Operating system</li>
+                        <li>Referring website</li>
+                        <li>Pages visited and time spent on pages</li>
+                        <li>Date and time of access</li>
+                    </ul>
+                </div>
+
+                <!-- How We Use Your Information -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">3. How We Use Your Information</h2>
+                    <p class="mb-4">We use the information we collect for the following purposes:</p>
+                    <ul class="policy-list">
+                        <li>To provide and maintain our services</li>
+                        <li>To personalize your experience and remember your preferences</li>
+                        <li>To respond to your inquiries and provide customer support</li>
+                        <li>To improve our website and services</li>
+                        <li>To analyze usage patterns and optimize user experience</li>
+                        <li>To ensure the security of our website</li>
+                        <li>To comply with legal obligations</li>
+                    </ul>
+                </div>
+
+                <!-- Data Storage and Security -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">4. Data Storage and Security</h2>
+                    <h3 class="text-xl font-semibold mb-3">Local Storage</h3>
+                    <p class="mb-4">
+                        We use your browser's local storage to save your preferences, including:
+                    </p>
+                    <ul class="policy-list mb-6">
+                        <li>Favorite names you have selected</li>
+                        <li>Theme preferences (light/dark mode)</li>
+                        <li>Color theme selections</li>
+                    </ul>
+                    <p class="mb-4">
+                        This information is stored locally on your device and is not transmitted to our servers. You can clear this data at any time by clearing your browser's local storage.
+                    </p>
+
+                    <h3 class="text-xl font-semibold mb-3">Security Measures</h3>
+                    <p>
+                        We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
+                    </p>
+                </div>
+
+                <!-- Cookies and Tracking -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">5. Cookies and Tracking Technologies</h2>
+                    <p class="mb-4">
+                        We use cookies and similar tracking technologies to track activity on our website and hold certain information. Cookies are files with a small amount of data that may include an anonymous unique identifier.
+                    </p>
+                    <p class="mb-4">
+                        You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.
+                    </p>
+                    <p>
+                        We use cookies for the following purposes:
+                    </p>
+                    <ul class="policy-list">
+                        <li>Essential cookies for website functionality</li>
+                        <li>Preference cookies to remember your settings</li>
+                        <li>Analytics cookies to understand how users interact with our website</li>
+                    </ul>
+                </div>
+
+                <!-- Third-Party Services -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">6. Third-Party Services</h2>
+                    <p class="mb-4">
+                        We may use third-party services that collect, monitor, and analyze information to improve our website's functionality. These third parties have access to your information only to perform specific tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+                    </p>
+                    <p>
+                        Currently, we use the following third-party services:
+                    </p>
+                    <ul class="policy-list">
+                        <li><strong>Google Fonts:</strong> For typography on our website</li>
+                        <li><strong>Cloudinary:</strong> For image hosting and optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Your Rights -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">7. Your Rights</h2>
+                    <p class="mb-4">Depending on your location, you may have the following rights regarding your personal information:</p>
+                    <ul class="policy-list mb-6">
+                        <li><strong>Right to Access:</strong> You can request copies of your personal data</li>
+                        <li><strong>Right to Rectification:</strong> You can request that we correct any information you believe is inaccurate</li>
+                        <li><strong>Right to Erasure:</strong> You can request that we erase your personal data</li>
+                        <li><strong>Right to Restrict Processing:</strong> You can request that we restrict the processing of your personal data</li>
+                        <li><strong>Right to Data Portability:</strong> You can request that we transfer the data we have collected to another organization</li>
+                        <li><strong>Right to Object:</strong> You can object to our processing of your personal data</li>
+                    </ul>
+                    <p>
+                        To exercise any of these rights, please contact us using the information provided in the "Contact Us" section.
+                    </p>
+                </div>
+
+                <!-- Children's Privacy -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">8. Children's Privacy</h2>
+                    <p class="mb-4">
+                        Our service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us.
+                    </p>
+                    <p>
+                        If we become aware that we have collected personal information from children under 13 without verification of parental consent, we take steps to remove that information from our servers.
+                    </p>
+                </div>
+
+                <!-- Changes to This Policy -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">9. Changes to This Privacy Policy</h2>
+                    <p class="mb-4">
+                        We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+                    </p>
+                    <p>
+                        You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+                    </p>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="policy-section">
+                    <h2 class="text-2xl font-bold mb-4">10. Contact Us</h2>
+                    <p class="mb-4">
+                        If you have any questions about this Privacy Policy, please contact us:
+                    </p>
+                    <ul class="policy-list">
+                        <li><strong>Email:</strong> privacy@nurnames.com</li>
+                        <li><strong>Contact Form:</strong> Through our website's contact form</li>
+                        <li><strong>Address:</strong> [Your Business Address]</li>
+                    </ul>
+                    <p class="mt-4">
+                        We will respond to your inquiry within a reasonable timeframe.
+                    </p>
+                </div>
+
+                <!-- Consent -->
+                <div class="policy-section bg-accent/10 border-accent">
+                    <h2 class="text-2xl font-bold mb-4">Your Consent</h2>
+                    <p class="mb-4">
+                        By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+                    </p>
+                    <p>
+                        If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section text-white py-12 transition-all duration-500">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold mb-2">Nūr<span class="text-accent">Names</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-200">Every child is a blessing — الحمد لله</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-gray-300">
+                    <p>
+                        Developed by 
+                        <a href="https://www.aliahtisham.pro/" target="_blank" class="developer-name">Ali Ahtisham</a> 
+                        | Designed with Faith and Elegance
+                    </p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+                    <a href="index.html#about" class="footer-link">Contact</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-8 pt-8 border-t border-gray-600">
+                <p class="text-sm text-gray-400">© 2025 NūrNames. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeSelector = document.getElementById('theme-selector');
+
+        // Apply saved theme
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+
+            if (savedColorTheme !== 'default') {
+                document.documentElement.classList.add(`theme-${savedColorTheme}`);
+                themeSelector.value = savedColorTheme;
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Change color theme
+        function changeColorTheme() {
+            const theme = themeSelector.value;
+            document.documentElement.classList.remove('theme-emerald', 'theme-royal-blue', 'theme-desert-glow');
+            if (theme !== 'default') {
+                document.documentElement.classList.add(`theme-${theme}`);
+            }
+            localStorage.setItem('colorTheme', theme);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            applySavedTheme();
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            themeSelector.addEventListener('change', changeColorTheme);
+        });
+    </script>
+</body>
+</html>
