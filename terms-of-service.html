@@ -245,17 +245,6 @@
         font-weight: bold;
     }
 
-    /* Important Notice Box */
-    .important-notice {
-        background: linear-gradient(135deg, var(--accent), #b38728);
-        color: white;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        text-align: center;
-        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-    }
-
     /* Last Updated Badge */
     .last-updated {
         background: var(--accent);
@@ -408,13 +397,59 @@
             <div class="terms-content">
                 
                 <!-- Important Notice -->
-                <div class="important-notice">
-                    <h2 class="text-2xl font-bold mb-4">📜 Important Notice</h2>
-                    <p class="text-lg">
-                        By accessing and using NūrNames, you accept and agree to be bound by the terms and provisions of this agreement.
-                    </p>
-                </div>
+<div class="important-notice">
+    <h2 class="text-2xl font-bold mb-4">📜 Important Notice</h2>
+    <p class="text-lg">
+        By accessing and using NūrNames, you accept and agree to be bound by the terms and provisions of this agreement.
+    </p>
+</div>
 
+<style>
+/* Important Notice Box */
+.important-notice {
+    background: #ffffff;
+    color: #1a5fb4;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: center;
+    border: 3px solid var(--accent);
+    box-shadow: 0 8px 25px rgba(26, 95, 180, 0.2);
+}
+
+.important-notice h2 {
+    color: #1a5fb4;
+    text-shadow: 0 0 1px #1a5fb4;
+}
+
+.important-notice p {
+    color: #1a5fb4;
+    font-weight: 600;
+}
+
+/* Dark mode adjustments */
+.dark .important-notice {
+    background: #ffffff;
+    color: #1a5fb4;
+    border: 3px solid var(--accent);
+}
+
+.dark .important-notice h2 {
+    color: #1a5fb4;
+}
+
+.dark .important-notice p {
+    color: #1a5fb4;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .important-notice {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+}
+</style>
                 <!-- Table of Contents -->
                 <div class="toc">
                     <h3 class="text-xl font-bold mb-4">Table of Contents</h3>
