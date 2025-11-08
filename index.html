@@ -1440,27 +1440,6 @@ function setupContactForm() {
         
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-         // Contact form validation 
-function validateContactForm(formData) {
-    const { name, email, message } = formData;
-    
-    if (name.length < 2) {
-        showNotification('Invalid Name', 'Please enter a valid name', 'error');
-        return false;
-    }
-    
-    if (!email.includes('@') || !email.includes('.')) {
-        showNotification('Invalid Email', 'Please enter a valid email address', 'error');
-        return false;
-    }
-    
-    if (message.length < 10) {
-        showNotification('Message Too Short', 'Please enter a meaningful message', 'error');
-        return false;
-    }
-    
-    return true;
-}
         
         // Show loading state
         submitBtn.innerHTML = `
