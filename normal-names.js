@@ -2237,7 +2237,7 @@ const normalNames = [
 },
 {
     id: 173,
-    english: "Aalam",
+    english: "Alam",
     arabic: "عالم",
     urdu: "عالم",
     persian: "عالم",
@@ -2250,7 +2250,7 @@ const normalNames = [
 },
 {
     id: 174,
-    english: "Aalim",
+    english: "Alim",
     arabic: "عالم",
     urdu: "عالم",
     persian: "عالم",
@@ -2263,7 +2263,7 @@ const normalNames = [
 },
 {
     id: 175,
-    english: "Aamil",
+    english: "Amil",
     arabic: "عامل",
     urdu: "عامل",
     persian: "عامل",
@@ -3589,7 +3589,7 @@ const normalNames = [
 },
     {
     "id": 327,
-    "english": "Aabirah",
+    "english": "Abirah",
     "arabic": "عابره",
     "urdu": "عابره",
     "persian": "عابره",
@@ -3602,7 +3602,7 @@ const normalNames = [
 },
 {
     "id": 328,
-    "english": "Aabish",
+    "english": "Abish",
     "arabic": "عابش",
     "urdu": "عابش",
     "persian": "عابش",
@@ -3615,7 +3615,7 @@ const normalNames = [
 },
 {
     "id": 329,
-    "english": "Aadila",
+    "english": "Adila",
     "arabic": "عادله",
     "urdu": "عادله",
     "persian": "عادله",
@@ -3628,7 +3628,7 @@ const normalNames = [
 },
 {
     "id": 330,
-    "english": "Aafreeda",
+    "english": "Afreeda",
     "arabic": "آفریده",
     "urdu": "آفریده",
     "persian": "آفریده",
@@ -3641,7 +3641,7 @@ const normalNames = [
 },
 {
     "id": 331,
-    "english": "Aafreen",
+    "english": "Afreen",
     "arabic": "آفرین",
     "urdu": "آفرین",
     "persian": "آفرین",
@@ -3654,7 +3654,7 @@ const normalNames = [
 },
 {
     "id": 332,
-    "english": "Aaida",
+    "english": "Aida",
     "arabic": "عاﺋده",
     "urdu": "عاﺋده",
     "persian": "عاﺋده",
@@ -3667,7 +3667,7 @@ const normalNames = [
 },
 {
     "id": 333,
-    "english": "Aaila",
+    "english": "Aila",
     "arabic": "آﺋله",
     "urdu": "آﺋله",
     "persian": "آﺋله",
@@ -3680,7 +3680,7 @@ const normalNames = [
 },
 {
     "id": 334,
-    "english": "Aaima",
+    "english": "Aima",
     "arabic": "آﺋمه",
     "urdu": "آﺋمه",
     "persian": "آﺋمه",
@@ -3693,7 +3693,7 @@ const normalNames = [
 },
 {
     "id": 335,
-    "english": "Aaina",
+    "english": "Aina",
     "arabic": "آﺋینه",
     "urdu": "آﺋینه",
     "persian": "آﺋینه",
@@ -3706,7 +3706,7 @@ const normalNames = [
 },
 {
     "id": 336,
-    "english": "Aaira",
+    "english": "Aira",
     "arabic": "آﺋره",
     "urdu": "آﺋره",
     "persian": "آﺋره",
@@ -3732,7 +3732,7 @@ const normalNames = [
 },
 {
     "id": 338,
-    "english": "Aaliyah",
+    "english": "Aliyah",
     "arabic": "عالیه",
     "urdu": "عالیه",
     "persian": "عالیه",
@@ -3758,7 +3758,7 @@ const normalNames = [
 },
 {
     "id": 340,
-    "english": "Aamilah",
+    "english": "Amilah",
     "arabic": "عامله",
     "urdu": "عامله",
     "persian": "عامله",
@@ -3784,7 +3784,7 @@ const normalNames = [
 },
 {
     "id": 342,
-    "english": "Aamira",
+    "english": "Amira",
     "arabic": "عامره",
     "urdu": "عامره",
     "persian": "عامره",
@@ -3810,7 +3810,7 @@ const normalNames = [
 },
 {
     "id": 344,
-    "english": "Aania",
+    "english": "Ania",
     "arabic": "آنیه",
     "urdu": "آنیه",
     "persian": "آنیه",
@@ -3823,7 +3823,7 @@ const normalNames = [
 },
 {
     "id": 345,
-    "english": "Aanisah",
+    "english": "Anisah",
     "arabic": "انیسأ",
     "urdu": "انیسأ",
     "persian": "انیسأ",
@@ -3836,7 +3836,7 @@ const normalNames = [
 },
 {
     "id": 346,
-    "english": "Aasfa",
+    "english": "Asfa",
     "arabic": "آصفه",
     "urdu": "آصفه",
     "persian": "آصفه",
@@ -3849,7 +3849,7 @@ const normalNames = [
 },
 {
     "id": 347,
-    "english": "Aasira",
+    "english": "Asira",
     "arabic": "آصره",
     "urdu": "آصره",
     "persian": "آصره",
@@ -3862,7 +3862,7 @@ const normalNames = [
 },
 {
     "id": 348,
-    "english": "Aatiqah",
+    "english": "Atiqah",
     "arabic": "عتیقۃ",
     "urdu": "عتیقۃ",
     "persian": "عتیقۃ",
