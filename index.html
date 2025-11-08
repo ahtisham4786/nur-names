@@ -1439,19 +1439,54 @@
                 }
             });
             
-            // Close modal with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !nameModal.classList.contains('hidden')) {
-                    closeNameModal();
-                }
-            });
+            // Keyboard shortcuts add karo 
+document.addEventListener('keydown', function(e) {
+    // Ctrl+K ya Cmd+K for search
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-input').focus();
+    }
+    
+    // Escape key for closing modals/suggestions
+    if (e.key === 'Escape') {
+        document.getElementById('suggestions').classList.add('hidden');
+        document.getElementById('name-modal').classList.add('hidden');
+    }
+    
+    // Tab for quick navigation between filters
+    if (e.key === 'Tab' && e.altKey) {
+        e.preventDefault();
+        // Filter buttons par cycle 
+        const filters = document.querySelectorAll('.filter-btn');
+        const current = document.querySelector('.filter-btn.active');
+        let nextIndex = Array.from(filters).indexOf(current) + 1;
+        if (nextIndex >= filters.length) nextIndex = 0;
+        filters[nextIndex].click();
+    }
+});
+
+// Search box mein hint show 
+const searchInput = document.getElementById('search-input');
+searchInput.placeholder = "Search names... (Press Ctrl+K to quick search)";
+
+// Visual feedback ke liye CSS 
+searchInput.addEventListener('focus', function() {
+    this.style.boxShadow = "0 0 0 3px rgba(212, 175, 55, 0.3)";
+});
+
+searchInput.addEventListener('blur', function() {
+    this.style.boxShadow = "";
+});
         }
 
         // ===== MOBILE MENU =====
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const closeIcon = document.g
+                
+            
+            etElementById('close-icon');
             
             if (mobileMenu.classList.contains('hidden')) {
                 // Open menu
