@@ -754,17 +754,17 @@ const normalNames = [
         quranic: false
     },
     {
-        id: 59,
-        english: "Tahir",
-        arabic: "طاہر",
-        urdu: "طاہر",
-        persian: "طاهر",
-        meaning: "Pure, Chaste",
-        origin: "Arabic",
-        pronunciation: "Ta-hir",
-        gender: "boy",
-        status: "allowed",
-        quranic: false
+        "id": 59,
+        "english": "Adil",
+        "arabic": "عَادِل",
+        "urdu": "عَادِل",
+        "persian": "عادل",
+        "meaning": "Just, fair, honest",
+        "origin": "Arabic",
+        "pronunciation": "Aa-dil",
+        "gender": "boy",
+        "status": "allowed",
+        "quranic": false
     },
     {
         id: 60,
