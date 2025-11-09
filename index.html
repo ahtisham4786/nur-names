@@ -958,6 +958,65 @@
             font-size: 15px;
         }
     }
+    /* ===== LEGACY BROWSER SUPPORT ===== */
+/* Force dark mode for older browsers that don't support CSS variables */
+@media (prefers-color-scheme: dark) {
+  body:not(.light-mode) {
+    background-color: #0a0f14 !important;
+    color: #f9fafb !important;
+  }
+  
+  body:not(.light-mode) .card {
+    background: #1f2937 !important;
+    border-color: #374151 !important;
+    color: #ffffff !important;
+  }
+  
+  body:not(.light-mode) .glassmorphism {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Fallback for browsers that don't support CSS variables */
+@supports not (--css: variables) {
+  :root {
+    --primary: #0095fd;
+    --accent: #d4af37;
+    --background: #f8f6f2;
+    --secondary: #1e3a5f;
+  }
+  
+  body.dark {
+    background-color: #0a0f14;
+    color: #f9fafb;
+  }
+  
+  body.dark .card {
+    background: #1f2937;
+    border-color: #374151;
+    color: #ffffff;
+  }
+}
+
+/* Ensure text visibility in all scenarios */
+.card,
+.card *:not(.arabic):not(.quranic) {
+  color: inherit !important;
+}
+
+/* High contrast fallback */
+.high-contrast {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast .card {
+  background: #1a1a1a !important;
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
 </style>
 </head>
 <body class="bg-background text-primary">
@@ -1690,20 +1749,108 @@ function showNotification(title, message, type) {
 
 // ===== EXISTING FUNCTIONS - UPDATED WITH ENHANCEMENTS =====
 function init() {
+      // Apply legacy browser support first
+  applyLegacyThemeSupport();
+
     // Apply saved theme
-    const savedTheme = localStorage.getItem('theme') || 
-                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+  const savedTheme = localStorage.getItem('theme') || 
+                 (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
 
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-    }
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
+  }
 
-    if (savedColorTheme !== 'default') {
-        document.documentElement.classList.add(`theme-${savedColorTheme}`);
-        themeSelector.value = savedColorTheme;
+  if (savedColorTheme !== 'default' && !detectLegacyBrowser()) {
+    document.documentElement.classList.add(`theme-${savedColorTheme}`);
+    themeSelector.value = savedColorTheme;
+  }
+  
+    
+    // ===== LEGACY BROWSER DETECTION & FALLBACK =====
+function detectLegacyBrowser() {
+  const isLegacy = (
+    !window.CSS || 
+    !CSS.supports || 
+    !CSS.supports('color', 'var(--test)') ||
+    !window.matchMedia
+  );
+  
+  return isLegacy;
+}
+
+function applyLegacyThemeSupport() {
+  if (detectLegacyBrowser()) {
+    console.log("🔄 Legacy browser detected - applying fallbacks");
+    
+    // Add legacy class to body
+    document.body.classList.add('legacy-browser');
+    
+    // Force dark mode based on system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+      document.documentElement.classList.add('dark');
     }
     
+    // Apply high contrast if visibility issues persist
+    setTimeout(() => {
+      const isVisible = checkContentVisibility();
+      if (!isVisible) {
+        document.body.classList.add('high-contrast');
+        showLegacyBrowserWarning();
+      }
+    }, 1000);
+  }
+}
+
+function checkContentVisibility() {
+  const testElement = document.createElement('div');
+  testElement.style.cssText = 'position: absolute; left: -9999px;';
+  testElement.textContent = 'Visibility Test';
+  document.body.appendChild(testElement);
+  
+  const isVisible = testElement.offsetWidth > 0;
+  document.body.removeChild(testElement);
+  
+  return isVisible;
+}
+
+function showLegacyBrowserWarning() {
+  const warning = document.createElement('div');
+  warning.innerHTML = `
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ff6b6b;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      z-index: 10000;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    ">
+      ⚠ Your browser has limited support. For best experience, 
+      <a href="https://browsehappy.com/" target="_blank" style="color: white; text-decoration: underline;">
+        update your browser
+      </a>
+      or 
+      <button onclick="this.parentElement.remove()" style="
+        background: white;
+        color: #ff6b6b;
+        border: none;
+        padding: 2px 8px;
+        margin-left: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+      ">Dismiss</button>
+    </div>
+  `;
+  document.body.appendChild(warning);
+}
+
     // Render names
     renderNames();
     renderQuranicNames();
@@ -1841,11 +1988,19 @@ function toggleMobileMenu() {
     }
 }
 
+// ===== ENHANCED THEME MANAGEMENT =====
 function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
+  const isDark = document.documentElement.classList.contains('dark');
+  
+  if (isDark) {
+    document.documentElement.classList.remove('dark');
+    document.body.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
 
 function changeColorTheme() {
     const theme = themeSelector.value;
