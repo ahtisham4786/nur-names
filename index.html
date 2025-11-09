@@ -1407,12 +1407,13 @@
                     </div>
                     
                     <div class="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-                        <button id="modal-favorite" class="flex items-center text-accent hover:text-yellow-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                            <span>Add to Favorites</span>
-                        </button>
+           <button id="modal-favorite" class="flex items-center text-gray-400 hover:text-yellow-500 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+              <span>Add to Favorites</span>
+                     </button>
+
                         
                         <div class="flex space-x-2">
                             <button id="modal-copy" class="p-2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" title="Copy name">
@@ -2155,13 +2156,20 @@ function updateAllFavoriteButtons(nameId) {
 
 function updateModalFavoriteButton(nameId) {
     const isFav = favorites.includes(nameId);
+    const heartIcon = modalFavorite.querySelector('svg');
     const favoriteText = modalFavorite.querySelector('span');
     
     if (isFav) {
-        modalFavorite.classList.add('text-accent');
+        // FILLED HEART - Cards jaisa exact (silver/gray color)
+        heartIcon.setAttribute('fill', 'currentColor');
+        modalFavorite.classList.add('text-yellow-500');
+        modalFavorite.classList.remove('text-gray-400');
         favoriteText.textContent = 'Remove from Favorites';
     } else {
-        modalFavorite.classList.remove('text-accent');
+        // OUTLINE HEART - Cards jaisa exact (gray color)
+        heartIcon.setAttribute('fill', 'none');
+        modalFavorite.classList.remove('text-yellow-500');
+        modalFavorite.classList.add('text-gray-400');
         favoriteText.textContent = 'Add to Favorites';
     }
 }
