@@ -5504,7 +5504,7 @@ const normalNames = [
     "arabic": "اریبۃ",
     "urdu": "اریبۃ",
     "persian": "اریبۃ",
-    "meaning": "Wise",
+    "meaning": "Wise, Intelligent",
     "origin": "Arabic",
     "pronunciation": "A-ree-ba",
     "gender": "girl",
@@ -21803,17 +21803,17 @@ const normalNames = [
     "quranic": false
 },
 {
-    "id": 1783,
-    "english": "Areeba",
-    "arabic": "اریبۃ",
-    "urdu": "اریبۃ",
-    "persian": "اریبۃ",
-    "meaning": "Wise intelligent",
-    "origin": "Arabic",
-    "pronunciation": "A-ree-ba",
-    "gender": "girl",
-    "status": "allowed",
-    "quranic": false
+  "id": 1783,
+  "english": "Areeb",
+  "arabic": "أَرِيب",
+  "urdu": "اَریب",
+  "persian": "اَریب",
+  "meaning": "Wise, intelligent",
+  "origin": "Arabic",
+  "pronunciation": "A-reeb",
+  "gender": "boy",
+  "status": "allowed",
+  "quranic": false
 },
 {
     "id": 1784,
