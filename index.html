@@ -1681,7 +1681,8 @@ function showNotification(title, message, type) {
 // ===== EXISTING FUNCTIONS - UPDATED WITH ENHANCEMENTS =====
 function init() {
     // Apply saved theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
 
     if (savedTheme === 'dark') {
