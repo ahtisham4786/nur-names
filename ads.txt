@@ -1,1 +1,2 @@
 google.com, pub-2508218431833695, DIRECT, f08c47fec0942fa0
+ezoic.com, pub-2508218431833695, RESELLER
