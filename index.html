@@ -2037,15 +2037,24 @@ function renderNames(namesToRender = null) {
     namesGrid.innerHTML = '';
     
     // Render names
-    if (namesToShow.length === 0) {
-        namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
-        return;
-    }
-    
-    namesToShow.forEach(name => {
-        const nameCard = createNameCard(name);
-        namesGrid.appendChild(nameCard);
-    });
+if (namesToShow.length === 0) {
+    namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
+    return;
+}
+
+//render all names
+namesToShow.forEach(name => {
+    const nameCard = createNameCard(name);
+    namesGrid.appendChild(nameCard);
+});
+
+// Amazon section at the end (WORLD CLASS)
+if (namesToShow.length > 8) {
+    setTimeout(() => {
+        const amazonSection = createAmazonSection();
+        namesGrid.appendChild(amazonSection);
+    }, 100);
+}
     
     // Show/hide load more button
     loadMoreBtn.classList.toggle('hidden', names.length <= displayedNames);
