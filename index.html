@@ -1676,6 +1676,53 @@ function showNotification(title, message, type) {
         setTimeout(() => notification.remove(), 300);
     });
 }
+        // ===== Amazon Affiliate =====
+        function createAmazonSection() {
+    const section = document.createElement('div');
+    section.innerHTML = `
+        <!-- Amazon Product Section -->
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 my-8 border-2" style="border-color: var(--accent); box-shadow: 0 0 25px var(--glow);">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold mb-3" style="color: var(--accent);">📖 Recommended For You</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg">Perfect companion for your name search journey</p>
+            </div>
+            
+            <!-- Single Product - Focused -->
+            <div class="max-w-md mx-auto">
+                <a href="https://amzn.to/4oX017m" 
+                   target="_blank" 
+                   class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 border-2 border-transparent hover:border-yellow-500 flex flex-col items-center text-center group">
+                    
+                    <!-- Product Icon -->
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300" style="background: var(--accent);">
+                        <span class="text-3xl text-white">📚</span>
+                    </div>
+                    
+                    <!-- Product Info -->
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gray-800 dark:text-white text-xl mb-2 group-hover:text-yellow-600 transition-colors">
+                            Islamic Baby Names Book
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
+                            Discover 5000+ beautiful Islamic names with meanings, pronunciations, and Quranic references
+                        </p>
+                        
+                        <!-- CTA Button -->
+                        <div class="px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg" style="background: var(--accent);">
+                            View on Amazon →
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Trust Badge -->
+            <div class="text-center mt-4">
+                <p class="text-xs text-gray-500 dark:text-gray-400">🏆 Most Popular Among Parents</p>
+            </div>
+        </div>
+    `;
+    return section;
+}
 
 // ===== EXISTING FUNCTIONS - UPDATED WITH ENHANCEMENTS =====
 function init() {
@@ -1998,6 +2045,12 @@ function renderNames(namesToRender = null) {
     namesToShow.forEach(name => {
         const nameCard = createNameCard(name);
         namesGrid.appendChild(nameCard);
+
+         // Har 12 names ke baad Amazon section
+        if ((index + 1) % 12 === 0 && (index + 1) !== namesToShow.length) {
+            const amazonSection = createAmazonSection();
+            namesGrid.appendChild(amazonSection);
+        }
     });
     
     // Show/hide load more button
