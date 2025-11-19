@@ -1676,50 +1676,6 @@ function showNotification(title, message, type) {
         setTimeout(() => notification.remove(), 300);
     });
 }
-        // ===== Amazon Affiliate =====
-       function createAmazonSection() {
-    const section = document.createElement('div');
-    section.className = 'mt-12 mb-8 fade-in';
-    section.innerHTML = `
-        <!-- World Class Native Advertisement -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-300 max-w-2xl mx-auto">
-            <!-- Header -->
-            <div class="flex items-start justify-between mb-3">
-                <span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Sponsored</span>
-                <span class="text-xs text-gray-400 dark:text-gray-500">• Advertisement</span>
-            </div>
-            
-            <!-- Content -->
-            <div class="flex items-center gap-4">
-                <!-- Product Image Placeholder -->
-                <div class="w-16 h-20 bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 rounded-lg flex items-center justify-center flex-shrink-0 border border-yellow-200 dark:border-yellow-700">
-                    <span class="text-2xl">📚</span>
-                </div>
-                
-                <!-- Text Content -->
-                <div class="flex-1">
-                    <h3 class="font-semibold text-gray-900 dark:text-white text-lg leading-tight mb-1">
-                        Islamic Baby Names: The Complete Guide
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-3 leading-relaxed">
-                        5000+ beautiful names with Arabic pronunciations, Quranic references, and cultural meanings.
-                    </p>
-                    
-                    <!-- CTA -->
-                    <div class="flex items-center gap-3">
-                        <a href="https://amzn.to/4oX017m" 
-                           target="_blank"
-                           class="bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                           View on Amazon
-                        </a>
-                        <span class="text-xs text-gray-500 dark:text-gray-400">$24.99</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    return section;
-}
 
 // ===== EXISTING FUNCTIONS - UPDATED WITH ENHANCEMENTS =====
 function init() {
@@ -2034,23 +1990,15 @@ function renderNames(namesToRender = null) {
     namesGrid.innerHTML = '';
     
     // Render names
-if (namesToShow.length === 0) {
-    namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
-    return;
-}
-
-//render all names
-namesToShow.forEach(name => {
-    const nameCard = createNameCard(name);
-    namesGrid.appendChild(nameCard);
-});
-
-    // After every 12 names - PERFECT PLACEMENT
-    if ((index + 1) % 12 === 0) {
-        const amazonSection = createAmazonSection();
-        namesGrid.appendChild(amazonSection);
+    if (namesToShow.length === 0) {
+        namesGrid.innerHTML = '<p class="col-span-full text-center py-8 text-gray-500">No names found matching your criteria.</p>';
+        return;
     }
-
+    
+    namesToShow.forEach(name => {
+        const nameCard = createNameCard(name);
+        namesGrid.appendChild(nameCard);
+    });
     
     // Show/hide load more button
     loadMoreBtn.classList.toggle('hidden', names.length <= displayedNames);
