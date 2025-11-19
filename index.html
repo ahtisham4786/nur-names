@@ -2045,13 +2045,12 @@ namesToShow.forEach(name => {
     namesGrid.appendChild(nameCard);
 });
 
-// Amazon section at the end (WORLD CLASS)
-if (namesToShow.length > 8) {
-    setTimeout(() => {
+    // After every 12 names - PERFECT PLACEMENT
+    if ((index + 1) % 12 === 0) {
         const amazonSection = createAmazonSection();
         namesGrid.appendChild(amazonSection);
-    }, 100);
-}
+    }
+
     
     // Show/hide load more button
     loadMoreBtn.classList.toggle('hidden', names.length <= displayedNames);
