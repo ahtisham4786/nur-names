@@ -2045,12 +2045,6 @@ function renderNames(namesToRender = null) {
     namesToShow.forEach(name => {
         const nameCard = createNameCard(name);
         namesGrid.appendChild(nameCard);
-
-         // Har 12 names ke baad Amazon section
-        if ((index + 1) % 12 === 0 && (index + 1) !== namesToShow.length) {
-            const amazonSection = createAmazonSection();
-            namesGrid.appendChild(amazonSection);
-        }
     });
     
     // Show/hide load more button
