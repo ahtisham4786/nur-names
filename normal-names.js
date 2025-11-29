@@ -42652,7 +42652,7 @@ const normalNames = [
     "pronunciation": "Ib-ra-heem",
     "gender": "boy",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3387,
@@ -42834,7 +42834,7 @@ const normalNames = [
     "pronunciation": "Fa-te-meh",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3401,
@@ -43055,7 +43055,7 @@ const normalNames = [
     "pronunciation": "Ha-jar",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3418,
@@ -43211,7 +43211,7 @@ const normalNames = [
     "pronunciation": "Hos-sein",
     "gender": "boy",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3430,
@@ -43393,7 +43393,7 @@ const normalNames = [
     "pronunciation": "Kha-di-jeh",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3444,
@@ -43536,7 +43536,7 @@ const normalNames = [
     "pronunciation": "Mah-di",
     "gender": "boy",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3455,
@@ -43718,7 +43718,7 @@ const normalNames = [
     "pronunciation": "Meh-di",
     "gender": "boy",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3469,
@@ -43965,7 +43965,7 @@ const normalNames = [
     "pronunciation": "Mou-sa",
     "gender": "boy",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3488,
@@ -44303,7 +44303,7 @@ const normalNames = [
     "pronunciation": "Rog-ha-yeh",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3514,
@@ -45135,7 +45135,7 @@ const normalNames = [
     "pronunciation": "Zei-nab",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3578,
@@ -45148,7 +45148,7 @@ const normalNames = [
     "pronunciation": "Zey-nab",
     "gender": "girl",
     "status": "allowed",
-    "quranic": true
+    "quranic": false
 },
 {
     "id": 3579,
