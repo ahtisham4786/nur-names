@@ -167,13 +167,10 @@ nurnames/
 ### **Development Setup**
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/nurnames.git
+git clone https://github.com/ahtisham4786/nur-names.git
 
 # Navigate to project
 cd nurnames
-
-# Install dependencies (if any)
-npm install
 
 # Run development server
 npx live-server
